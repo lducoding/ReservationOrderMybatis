@@ -3,7 +3,7 @@ package com.ldu.reservationOrder.dto;
 public class Restaurant {
 
     String id;
-    String resName;
+    String name;
 
     public String getId() {
         return id;
@@ -13,12 +13,12 @@ public class Restaurant {
         this.id = id;
     }
 
-    public String getResName() {
-        return resName;
+    public String getName() {
+        return name;
     }
 
-    public void setResName(String resName) {
-        this.resName = resName;
+    public void setName(String name) {
+        this.name = name;
     }
 
 }

@@ -6,9 +6,9 @@
 </head>
 음식점 리스트 보여주는 화면
 <body>
-<tr th:each="member : ${list}">
-    <td th:text="${list.id}"></td>
-    <td th:text="${list.resName}"></td>
+<tr th:each="member : ${list}"><br>
+    <td th:text="${list.id}"></td><br>
+    <td th:text="${list.name}"></td>
 </tr>
 
 </body>

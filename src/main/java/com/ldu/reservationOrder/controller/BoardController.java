@@ -15,7 +15,6 @@ public class BoardController {
     @Autowired
     private BoardService boardService;
 
-
     @GetMapping("/res/showlist")
     public String resShowList(Model model) {
         List<Restaurant> allRestaurant = boardService.findAllRestaurant();
