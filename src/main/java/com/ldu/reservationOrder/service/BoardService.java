@@ -12,23 +12,21 @@ import java.util.List;
 @Service
 public class BoardService {
 
-    @Autowired
-     private final BoardRepository boardRepository;
+//    @Autowired
+//     private final BoardRepository boardRepository;
+
+//    public BoardService(BoardRepository boardRepository) {
+//        this.boardRepository = boardRepository;
+//    }
 
     @Autowired
     private BoardMapper boardMapper;
-
-    public BoardService(BoardRepository boardRepository) {
-        this.boardRepository = boardRepository;
-    }
-
 
     /**
      *
      * 등록된 음식점 전체 조회
      */
     public List<Restaurant> findAllRestaurant() {
-
         return boardMapper.findAllRestaurant();
     }
 }

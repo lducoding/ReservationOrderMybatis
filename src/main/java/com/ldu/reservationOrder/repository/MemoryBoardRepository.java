@@ -15,7 +15,7 @@ public class MemoryBoardRepository implements BoardRepository {
 
     @Override
     public List<Restaurant> findAllRestaurant() {
-        restaurant.setId("123");
+        restaurant.setId(123);
         restaurant.setName("알이꽉 찬 간장게장");
         restaurantList.add(restaurant);
         return restaurantList;

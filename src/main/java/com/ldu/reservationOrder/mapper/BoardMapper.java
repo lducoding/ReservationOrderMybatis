@@ -9,6 +9,6 @@ import java.util.List;
 @Mapper
 public interface BoardMapper {
 
-    @Select("select * from test")
+    @Select("select * from restaurant")
     List<Restaurant> findAllRestaurant();
 }

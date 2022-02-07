@@ -18,7 +18,7 @@ public class BoardController {
     @GetMapping("/res/showlist")
     public String resShowList(Model model) {
         List<Restaurant> allRestaurant = boardService.findAllRestaurant();
-        model.addAttribute("list", allRestaurant.get(0));
+        model.addAttribute("list", allRestaurant);
         return "board/resShowList";
     }
 }
