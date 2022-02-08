@@ -18,11 +18,11 @@
     </thead>
     <tbody>
     <tr th:each="user : ${list}">
-        <td th:text="${user.id}">emil</td>
-        <td th:text="${user.name}">name</td>
-        <td th:text="${user.location}">stat</td>
-        <td th:text="${user.daily_profit}">super</td>
-        <td th:text="${user.weekly_profit}">super</td>
+        <td th:text="${user.id}"></td>
+        <td><a href="/res/restaurantStatus"><span th:text="${user.name}"></span></a></td>
+        <td th:text="${user.location}"></td>
+        <td th:text="${user.daily_profit}"></td>
+        <td th:text="${user.weekly_profit}"></td>
     </tr>
     </tbody>
 </table>

@@ -15,10 +15,16 @@ public class BoardController {
     @Autowired
     private BoardService boardService;
 
-    @GetMapping("/res/showlist")
+    @GetMapping("/res/showList")
     public String resShowList(Model model) {
         List<Restaurant> allRestaurant = boardService.findAllRestaurant();
         model.addAttribute("list", allRestaurant);
         return "board/resShowList";
+    }
+
+    @GetMapping("/res/restaurantStatus")
+    public String restaurantStatus(Model model) {
+        Restaurant res = new Restaurant();
+        return "board/resStatus";
     }
 }

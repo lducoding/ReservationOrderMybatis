@@ -23,10 +23,10 @@ public class BoardService {
     private BoardMapper boardMapper;
 
     /**
-     *
      * 등록된 음식점 전체 조회
      */
     public List<Restaurant> findAllRestaurant() {
         return boardMapper.findAllRestaurant();
     }
+
 }
