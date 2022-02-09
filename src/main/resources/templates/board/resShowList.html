@@ -19,7 +19,7 @@
     <tbody>
     <tr th:each="user : ${list}">
         <td th:text="${user.id}"></td>
-        <td><a href="/res/restaurantStatus"><span th:text="${user.name}"></span></a></td>
+        <td><a th:href="@{/res/restaurantStatus(id=${user.id})}"><span th:text="${user.name}"></span></a></td>
         <td th:text="${user.location}"></td>
         <td th:text="${user.daily_profit}"></td>
         <td th:text="${user.weekly_profit}"></td>

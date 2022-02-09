@@ -11,4 +11,7 @@ public interface BoardMapper {
 
     @Select("select * from restaurant")
     List<Restaurant> findAllRestaurant();
+
+    @Select("select * from restaurant where id = #{id}")
+    Restaurant restaurantStatus(String id);
 }

@@ -29,4 +29,11 @@ public class BoardService {
         return boardMapper.findAllRestaurant();
     }
 
+    /**
+     * 음식점 상세조회
+     */
+    public Restaurant restaurantStatus(String id) {
+        return boardMapper.restaurantStatus(id);
+    }
+
 }
