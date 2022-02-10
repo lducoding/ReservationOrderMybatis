@@ -20,4 +20,11 @@ public class BoardServiceTest {
         List<Restaurant> allRestaurant = boardService.findAllRestaurant();
         assertThat(allRestaurant.size()).isEqualTo(7);
     }
+
+    @Test
+    public void 음식점상세보기() {
+        String id = "2";
+        Restaurant restaurant = boardService.restaurantStatus(id);
+        assertThat(restaurant.getId()).isEqualTo(2);
+    }
 }

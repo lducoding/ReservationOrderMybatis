@@ -22,4 +22,11 @@ public class BoardMapperTest {
         List<Restaurant> allRestaurant = boardMapper.findAllRestaurant();
         assertThat(allRestaurant.size()).isEqualTo(7);
     }
+
+    @Test
+    public void 레스토랑상세보기() {
+        String id = "3";
+        Restaurant restaurant = boardMapper.restaurantStatus(id);
+        assertThat(restaurant.getId()).isEqualTo(3);
+    }
 }

@@ -2,17 +2,17 @@ package com.ldu.reservationOrder.dto;
 
 public class Restaurant {
 
-    int id;
+    String id;
     String name;
     String location;
     String daily_profit;
     String weekly_profit;
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
