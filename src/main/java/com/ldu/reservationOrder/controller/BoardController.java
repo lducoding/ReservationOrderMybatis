@@ -1,5 +1,6 @@
 package com.ldu.reservationOrder.controller;
 
+import com.ldu.reservationOrder.dto.ReservationTime;
 import com.ldu.reservationOrder.dto.Restaurant;
 import com.ldu.reservationOrder.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,5 +30,12 @@ public class BoardController {
         Restaurant restaurant = boardService.restaurantStatus((String) params.get("id"));
         model.addAttribute("restaurant", restaurant);
         return "board/resStatus";
+    }
+
+    @GetMapping("/res/showReservation")
+    public String showReservation(Model model, @RequestParam Map<String, Object> params) {
+        ReservationTime reservationTime = boardService.showReservation((String) params.get("res_id"));
+        model.addAttribute("timeTable", reservationTime);
+        return "board/resShowReservation";
     }
 }

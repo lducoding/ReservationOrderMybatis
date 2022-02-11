@@ -1,5 +1,6 @@
 package com.ldu.reservationOrder.service;
 
+import com.ldu.reservationOrder.dto.ReservationTime;
 import com.ldu.reservationOrder.dto.Restaurant;
 import com.ldu.reservationOrder.mapper.BoardMapper;
 import com.ldu.reservationOrder.repository.BoardRepository;
@@ -36,4 +37,7 @@ public class BoardService {
         return boardMapper.restaurantStatus(id);
     }
 
+    public ReservationTime showReservation(String res_id) {
+        return boardMapper.showReservation(res_id);
+    }
 }

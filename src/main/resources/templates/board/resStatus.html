@@ -9,5 +9,7 @@
 <span th:text="${restaurant.getId()}"></span>
 <span th:text="${restaurant.getName()}"></span>
 <span th:text="${restaurant.getDaily_profit()}"></span>
+비동기로 구현 예정
+<a th:href="@{/res/showReservation(res_id=${restaurant.getId()})}">예약하기</a>
 </body>
 </html>
