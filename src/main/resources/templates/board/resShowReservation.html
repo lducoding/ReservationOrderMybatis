@@ -1,11 +1,284 @@
 <!DOCTYPE html>
 <html lang="en">
+<style>
+    td {
+        border: solid 1px;
+        height: 10%;
+        text-align: center;
+    }
+</style>
 <head>
     <meta charset="UTF-8">
     <title>예약현황</title>
 </head>
 <body>
 예약현황을 보여준다
-<span th:text="${timeTable.getT0H()}"></span>
+<table>
+    <tbody>
+    <tr>
+        <td>
+            오전 12시 ~ 오전 12시 30분<br>
+            <span th:if="${timeTable.getT0H()!=null}" th:text="|${timeTable.getT0H()}팀|"></span>
+            <span th:unless="${timeTable.getT0H()!=null}">0팀</span>
+        </td>
+
+        <td>오전 12시 30분 ~ 오전 1시<br>
+            <span th:if="${timeTable.getT1()!=null}" th:text="|${timeTable.getT1()}팀|"></span>
+            <span th:unless="${timeTable.getT1()!=null}">0팀</span>
+        </td>
+
+        <td>오전 1시 ~ 오전 1시 30분<br>
+            <span th:if="${timeTable.getT1H()!=null}" th:text="|${timeTable.getT1H()}팀|"></span>
+            <span th:unless="${timeTable.getT1H()!=null}">0팀</span>
+       </td>
+
+        <td>오전 1시 30분 ~ 오전 2시<br>
+            <span th:if="${timeTable.getT2()}!=null" th:text="|${timeTable.getT2()}팀|"></span>
+            <span th:unless="${timeTable.getT2()}!=null">0팀</span>
+        </td>
+    </tr>
+
+    <tr>
+        <td>오전 2시 ~ 오전 2시 30분<br>
+            <span th:if="${timeTable.getT2H()}!=null" th:text="|${timeTable.getT2H()}팀|"></span>
+            <span th:unless="${timeTable.getT2H()}!=null">0팀</span>
+        </td>
+
+        <td>오전 2시 30분 ~ 오전 3시<br>
+            <span th:if="${timeTable.getT3()}!=null" th:text="|${timeTable.getT3()}팀|"></span>
+            <span th:unless="${timeTable.getT3()}!=null">0팀</span>
+        </td>
+
+        <td>오전 3시 ~ 오전 3시 30분<br>
+            <span th:if="${timeTable.getT3H()}!=null" th:text="|${timeTable.getT3H()}팀|"></span>
+            <span th:unless="${timeTable.getT3H()}!=null">0팀</span>
+        </td>
+
+        <td>오전 3시 30분 ~ 오전 4시<br>
+            <span th:if="${timeTable.getT4()}!=null" th:text="|${timeTable.getT4()}팀|"></span>
+            <span th:unless="${timeTable.getT4()}!=null">0팀</span>
+        </td>
+    </tr>
+
+    <tr>
+        <td>오전 4시 ~ 오전 4시 30분<br>
+            <span th:if="${timeTable.getT4H()}!=null" th:text="|${timeTable.getT4H()}팀|"></span>
+            <span th:unless="${timeTable.getT4H()}!=null">0팀</span>
+        </td>
+
+        <td>오전 4시 30분 ~ 오전 5시<br>
+            <span th:if="${timeTable.getT5()}!=null" th:text="|${timeTable.getT5()}팀|"></span>
+            <span th:unless="${timeTable.getT5()}!=null">0팀</span>
+        </td>
+
+        <td>오전 5시 ~ 오전 5시 30분<br>
+            <span th:if="${timeTable.getT5H()}!=null" th:text="|${timeTable.getT5H()}팀|"></span>
+            <span th:unless="${timeTable.getT5H()}!=null">0팀</span>
+        </td>
+
+        <td>오전 5시 30분 ~ 오전 6시<br>
+            <span th:if="${timeTable.getT6()}!=null" th:text="|${timeTable.getT6()}팀|"></span>
+            <span th:unless="${timeTable.getT6()}!=null">0팀</span>
+        </td>
+    </tr>
+
+    <tr>
+        <td>오전 6시 ~ 오전 6시 30분<br>
+            <span th:if="${timeTable.getT6H()}!=null" th:text="|${timeTable.getT6H()}팀|"></span>
+            <span th:unless="${timeTable.getT6H()}!=null">0팀</span>
+        </td>
+
+        <td>오전 6시 30분 ~ 오전 7시<br>
+            <span th:if="${timeTable.getT7()}!=null" th:text="|${timeTable.getT7()}팀|"></span>
+            <span th:unless="${timeTable.getT7()}!=null">0팀</span>
+        </td>
+
+        <td>오전 7시 ~ 오전 7시 30분<br>
+            <span th:if="${timeTable.getT7H()}!=null" th:text="|${timeTable.getT7H()}팀|"></span>
+            <span th:unless="${timeTable.getT7H()}!=null">0팀</span>
+        </td>
+
+        <td>오전 7시 30분 ~ 오전 8시<br>
+            <span th:if="${timeTable.getT8()}!=null" th:text="|${timeTable.getT8()}팀|"></span>
+            <span th:unless="${timeTable.getT8()}!=null">0팀</span>
+        </td>
+    </tr>
+
+    <tr>
+        <td>오전 8시 ~ 오전 8시 30분<br>
+            <span th:if="${timeTable.getT8H()}!=null" th:text="|${timeTable.getT8H()}팀|"></span>
+            <span th:unless="${timeTable.getT8H()}!=null">0팀</span>
+        </td>
+
+        <td>오전 8시 30분 ~ 오전 9시<br>
+            <span th:if="${timeTable.getT9()}!=null" th:text="|${timeTable.getT9()}팀|"></span>
+            <span th:unless="${timeTable.getT9()}!=null">0팀</span>
+        </td>
+
+        <td>오전 9시 ~ 오전 9시 30분<br>
+            <span th:if="${timeTable.getT9H()}!=null" th:text="|${timeTable.getT9H()}팀|"></span>
+            <span th:unless="${timeTable.getT9H()}!=null">0팀</span>
+        </td>
+
+        <td>오전 9시 30분 ~ 오전 10시<br>
+            <span th:if="${timeTable.getT10()}!=null" th:text="|${timeTable.getT10()}팀|"></span>
+            <span th:unless="${timeTable.getT10()}!=null">0팀</span>
+        </td>
+    </tr>
+
+    <tr>
+        <td>오전 10시 ~ 오전 10시 30분<br>
+            <span th:if="${timeTable.getT10H()}!=null" th:text="|${timeTable.getT10H()}팀|"></span>
+            <span th:unless="${timeTable.getT10H()}!=null">0팀</span>
+        </td>
+
+        <td>오전 10시 30분 ~ 오전 11시<br>
+            <span th:if="${timeTable.getT11()}!=null" th:text="|${timeTable.getT11()}팀|"></span>
+            <span th:unless="${timeTable.getT11()}!=null">0팀</span>
+        </td>
+
+        <td>오전 11시 ~ 오전 11시 30분<br>
+            <span th:if="${timeTable.getT11H()}!=null" th:text="|${timeTable.getT11H()}팀|"></span>
+            <span th:unless="${timeTable.getT11H()}!=null">0팀</span>
+        </td>
+
+        <td>오전 11시 30분 ~ 오후 12시<br>
+            <span th:if="${timeTable.getT12()}!=null" th:text="|${timeTable.getT12()}팀|"></span>
+            <span th:unless="${timeTable.getT12()}!=null">0팀</span>
+        </td>
+    </tr>
+
+    <tr>
+        <td>오후 12시 ~ 오후 12시 30분<br>
+            <span th:if="${timeTable.getT12H()}!=null" th:text="|${timeTable.getT12H()}팀|"></span>
+            <span th:unless="${timeTable.getT12H()}!=null">0팀</span>
+        </td>
+
+        <td>오후 12시 30분 ~ 오후 1시<br>
+            <span th:if="${timeTable.getT13()}!=null" th:text="|${timeTable.getT13()}팀|"></span>
+            <span th:unless="${timeTable.getT13()}!=null" >0팀</span>
+        </td>
+
+        <td>오후 1시 ~ 오후 1시 30분<br>
+            <span th:if="${timeTable.getT13H()}" th:text="|${timeTable.getT13H()}팀|"></span>
+            <span th:unless="${timeTable.getT13H()}">0팀</span>
+        </td>
+
+        <td>오후 1시 30분 ~ 오후 2시<br>
+            <span th:if="${timeTable.getT14()}!=null" th:text="|${timeTable.getT14()}팀|"></span>
+            <span th:unless="${timeTable.getT14()}!=null">0팀</span>
+        </td>
+    </tr>
+
+    <tr>
+        <td>오후 2시 ~ 오후 2시 30분<br>
+            <span th:if="${timeTable.getT14H()}!=null" th:text="|${timeTable.getT14H()}팀|"></span>
+            <span th:unless="${timeTable.getT14H()}!=null">0팀</span>
+        </td>
+
+        <td>오후 2시 30분 ~ 오후 3시<br>
+            <span th:if="${timeTable.getT15()}!=null" th:text="|${timeTable.getT15()}팀|"></span>
+            <span th:unless="${timeTable.getT15()}!=null">0팀</span>
+        </td>
+
+        <td>오후 3시 ~ 오후 3시 30분<br>
+            <span th:if="${timeTable.getT15H()}!=null" th:text="|${timeTable.getT15H()}팀|"></span>
+            <span th:unless="${timeTable.getT15H()}!=null">0팀</span>
+        </td>
+
+        <td>오후 3시 30분 ~ 오후 4시<br>
+            <span th:if="${timeTable.getT16()}!=null" th:text="|${timeTable.getT16()}팀|"></span>
+            <span th:unless="${timeTable.getT16()}!=null">0팀</span>
+        </td>
+    </tr>
+
+    <tr>
+        <td>오후 4시 ~ 오후 4시 30분<br>
+            <span th:if="${timeTable.getT16H()}!=null" th:text="|${timeTable.getT16H()}팀|"></span>
+            <span th:unless="${timeTable.getT16H()}!=null">0팀</span>
+        </td>
+
+        <td>오후 4시 30분 ~ 오후 5시<br>
+            <span th:if="${timeTable.getT17()}!=null" th:text="|${timeTable.getT17()}팀|"></span>
+            <span th:unless="${timeTable.getT17()}!=null">0팀</span>
+        </td>
+
+        <td>오후 5시 ~ 오후 5시 30분<br>
+            <span th:if="${timeTable.getT17H()}!=null" th:text="|${timeTable.getT17H()}팀|"></span>
+            <span th:unless="${timeTable.getT17H()}!=null">0팀</span>
+        </td>
+
+        <td>오후 5시 30분 ~ 오후 6시<br>
+            <span th:if="${timeTable.getT18()}!=null" th:text="|${timeTable.getT18()}팀|"></span>
+            <span th:unless="${timeTable.getT18()}!=null">0팀</span>
+        </td>
+    </tr>
+    <tr>
+        <td>오후 6시 ~ 오후 6시 30분<br>
+            <span th:if="${timeTable.getT18H()}!=null" th:text="|${timeTable.getT18H()}팀|"></span>
+            <span th:unless="${timeTable.getT18H()}!=null">0팀</span>
+        </td>
+
+        <td>오후 6시 30분 ~ 오후 7시<br>
+            <span th:if="${timeTable.getT19()}!=null" th:text="|${timeTable.getT19()}팀|"></span>
+            <span th:unless="${timeTable.getT19()}!=null">0팀</span>
+        </td>
+
+        <td>오후 7시 ~ 오후 7시 30분<br>
+            <span th:if="${timeTable.getT19H()}!=null" th:text="|${timeTable.getT19H()}팀|"></span>
+            <span th:unless="${timeTable.getT19H()}!=null">0팀</span>
+        </td>
+
+        <td>오후 7시 30분 ~ 오후 8시<br>
+            <span th:if="${timeTable.getT20()}!=null" th:text="|${timeTable.getT20()}팀|"></span>
+            <span th:unless="${timeTable.getT20()}!=null">0팀</span>
+        </td>
+    </tr>
+
+    <tr>
+        <td>오후 8시 ~ 오후 8시 30분<br>
+            <span th:if="${timeTable.getT20H()}!=null" th:text="|${timeTable.getT20H()}팀|"></span>
+            <span th:unless="${timeTable.getT20H()}!=null">0팀</span>
+        </td>
+
+        <td>오후 8시 30분 ~ 오후 9시<br>
+            <span th:if="${timeTable.getT21()}!=null" th:text="|${timeTable.getT21()}팀|"></span>
+            <span th:unless="${timeTable.getT21()}!=null">0팀</span>
+        </td>
+
+        <td>오후 9시 ~ 오후 9시 30분<br>
+            <span th:if="${timeTable.getT21H()}!=null" th:text="|${timeTable.getT21H()}팀|"></span>
+            <span th:unless="${timeTable.getT21H()}!=null">0팀</span>
+        </td>
+
+        <td>오후 9시 30분 ~ 오후 10시<br>
+            <span th:if="${timeTable.getT22()}!=null" th:text="|${timeTable.getT22()}팀|"></span>
+            <span th:unless="${timeTable.getT22()}!=null">0팀</span>
+        </td>
+    </tr>
+
+    <tr>
+        <td>오후 10시 ~ 오후 10시 30분<br>
+            <span th:if="${timeTable.getT22H()}!=null" th:text="|${timeTable.getT22H()}팀|"></span>
+            <span th:unless="${timeTable.getT22H()}!=null">0팀</span>
+        </td>
+
+        <td>오후 10시 30분 ~ 오후 11시<br>
+            <span th:if="${timeTable.getT23()}!=null" th:text="|${timeTable.getT23()}팀|"></span>
+            <span th:unless="${timeTable.getT23()}!=null">0팀</span>
+        </td>
+
+        <td>오후 11시 ~ 오후 11시 30분<br>
+            <span th:if="${timeTable.getT23H()}!=null" th:text="|${timeTable.getT23H()}팀|"></span>
+            <span th:unless="${timeTable.getT23H()}!=null">0팀</span>
+        </td>
+
+        <td>오후 11시 30분 ~ 오전 12시<br>
+            <span th:if="${timeTable.getT24()}!=null" th:text="|${timeTable.getT24()}팀|"></span>
+            <span th:unless="${timeTable.getT24()}!=null">0팀</span>
+        </td>
+    </tr>
+    </tbody>
+</table>
 </body>
 </html>
