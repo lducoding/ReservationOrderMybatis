@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
@@ -46,6 +47,18 @@ public class BoardControllerTest {
                     .andExpect(status().is(200))
                     // 컨트롤러에 id값 전달하는 코드 생성하여 테스트
                     .andExpect(model().attribute("resId", "3"));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void 레스토랑예약현황보기() {
+        MockHttpServletRequestBuilder builder = get("/res/showReservation")
+                .param("id","1");
+        try {
+            MvcResult mvcResult = mockMvc.perform(builder).andExpect(view().name("board/resShowReservation"))
+                    .andExpect(status().is(200)).andReturn();
         } catch (Exception e) {
             e.printStackTrace();
         }
