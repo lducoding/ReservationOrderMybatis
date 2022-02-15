@@ -6,6 +6,15 @@ CREATE table restaurant(
                            weekly_profit int
 )
 
+ALTER TABLE time_table
+
+    ADD CONSTRAINT fkey
+
+        FOREIGN KEY (res_id)
+
+            REFERENCES restaurant (id);
+
+
 
 CREATE table time_table(
                            id int not null auto_increment primary key,
@@ -57,5 +66,17 @@ CREATE table time_table(
                            t22H int,
                            t23 int,
                            t23H int,
-                           t24 int
+                           t24 int,
+                           foreign key (res_id)  references restaurant (id)
 )
+
+CREATE table member(
+                       id varchar(20) not null primary key,
+                       pass varchar(50),
+                       role varchar(10),
+                       name varchar(10),
+                       birth date,
+                       phone varchar(20),
+                       email varchar(25)
+)
+
