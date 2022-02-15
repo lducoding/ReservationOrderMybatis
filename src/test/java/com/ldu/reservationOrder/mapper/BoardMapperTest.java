@@ -10,6 +10,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.as;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
@@ -17,6 +18,9 @@ public class BoardMapperTest {
 
     @Autowired
     private BoardMapper boardMapper;
+
+    @Autowired
+    private MemberMapper memberMapper;
 
     @Test
     public void 모든레스토랑불러오기() {
@@ -36,5 +40,12 @@ public class BoardMapperTest {
         String id = "1";
         ReservationTime reservationTime = boardMapper.showReservation(id);
         assertThat(reservationTime.getT0H()).isEqualTo("1");
+    }
+
+    @Test
+    public void chkRole권한체크() {
+        String id = "customer";
+        String role = memberMapper.chkRole(id);
+        assertThat(role).isEqualTo("customer");
     }
 }
