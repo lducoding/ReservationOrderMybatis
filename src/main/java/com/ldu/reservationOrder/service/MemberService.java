@@ -11,16 +11,18 @@ public class MemberService {
     private MemberMapper memberMapper;
 
     public void login(String id, String password) {
+        int role = chkRole(id);
+
     }
 
-    public int chkId(String id) {
-        String role = memberMapper.chkId(id);
-        if(role==null) {
-            return 0
-        } else if(role.equals("customer")) {
-            return 1
+    public int chkRole(String id) {
+        String role = memberMapper.chkRole(id);
+        if(role.equals("customer")) {
+            return 1;
         } else if(role.equals("seller")) {
-            return 2
+            return 2;
+        } else {
+            return 0;
         }
     }
 }

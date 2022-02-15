@@ -23,8 +23,8 @@ public class MemberController {
 
     @PostMapping("/member/login")
     public String login(Model model, @RequestParam Map<String, String> params) {
-        int who = memberService.chkId(params.get("id"));
         memberService.login(params.get("id"), params.get("password"));
+
         return "home";
     }
 }
