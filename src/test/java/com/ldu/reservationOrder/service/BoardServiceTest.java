@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -15,6 +16,9 @@ public class BoardServiceTest {
 
     @Autowired
     BoardService boardService;
+
+    @Autowired
+    MemberService memberService;
 
     @Test
     void 음식점전체조회() {
@@ -34,5 +38,12 @@ public class BoardServiceTest {
         String id = "1";
         ReservationTime reservationTime = boardService.showReservation(id);
         assertThat(reservationTime.getT0H()).isEqualTo("1");
+    }
+
+    @Test
+    public void chkRole권한체크() {
+        String id = "nu";
+        Optional<Integer> integer = memberService.chkRole(id);
+        assertThat(integer.get()).isEqualTo(0);
     }
 }
