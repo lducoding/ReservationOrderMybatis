@@ -4,6 +4,8 @@ import com.ldu.reservationOrder.mapper.MemberMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class MemberService {
 
@@ -11,19 +13,20 @@ public class MemberService {
     private MemberMapper memberMapper;
 
     public void login(String id, String password) {
-        int role = chkRole(id);
+        chkRole(id);
 
     }
 
-    public int chkRole(String id) {
-        String role = memberMapper.chkRole(id);
-        if(role.equals("customer")) {
-            return 1;
-        } else if(role.equals("seller")) {
-            return 2;
-        } else {
-            return 0;
+    public Optional<Integer> chkRole(String id) {
+        Optional<String> role = memberMapper.chkRole(id);
+        if(role.isPresent()) {
+            if (role.get().equals("customer")) {
+                return Optional.of(1);
+            } else if (role.equals("seller")) {
+                return Optional.of(2);
+            }
         }
+            return Optional.of(0);
     }
 }
 
