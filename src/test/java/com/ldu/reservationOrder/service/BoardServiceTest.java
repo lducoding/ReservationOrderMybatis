@@ -43,7 +43,7 @@ public class BoardServiceTest {
     @Test
     public void chkRole권한체크() {
         String id = "nu";
-        Optional<Integer> integer = memberService.chkRole(id);
-        assertThat(integer.get()).isEqualTo(0);
+        int integer = memberService.chkRole(id);
+        assertThat(integer).isEqualTo(0);
     }
 }
