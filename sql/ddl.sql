@@ -71,12 +71,26 @@ CREATE table time_table(
 )
 
 CREATE table member(
-                       id varchar(20) not null primary key,
-                       pass varchar(50),
-                       role varchar(10),
-                       name varchar(10),
-                       birth date,
-                       phone varchar(20),
-                       email varchar(25)
+                       id bigint not null auto_increment primary key,
+                       username varchar(50) not null unique,
+                       password varchar(100) not null,
+                       enabled bit(1) not null,
+                       birth date not null,
+                       phone varchar(20) not null,
+                       email varchar(25) not null
 )
+
+CREATE table role(
+                     id bigint not null auto_increment primary key,
+                     name varchar(50) not null unique
+)
+
+CREATE TABLE `user_role` (
+                             `user_id` bigint NOT NULL,
+                             `role_id` bigint NOT NULL,
+                             PRIMARY KEY (`user_id`,`role_id`),
+                             KEY `user_role_FK_1` (`role_id`),
+                             CONSTRAINT `user_role_FK` FOREIGN KEY (`user_id`) REFERENCES `member` (`id`),
+                             CONSTRAINT `user_role_FK_1` FOREIGN KEY (`role_id`) REFERENCES `role` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
 

@@ -13,20 +13,21 @@ public class MemberService {
     private MemberMapper memberMapper;
 
     public void login(String id, String password) {
-        chkRole(id);
+        int chkRole = chkRole(id);
+
 
     }
 
-    public Optional<Integer> chkRole(String id) {
+    public int chkRole(String id) {
         Optional<String> role = memberMapper.chkRole(id);
         if(role.isPresent()) {
             if (role.get().equals("customer")) {
-                return Optional.of(1);
+                return 1;
             } else if (role.equals("seller")) {
-                return Optional.of(2);
+                return 2;
             }
         }
-            return Optional.of(0);
+            return 0;
     }
 }
 
