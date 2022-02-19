@@ -9,9 +9,9 @@ import java.util.Optional;
 @Mapper
 public interface MemberMapper {
 
-    @Select("select role from member where id = #{id}")
+    @Select("select name from role where id = 1")
     Optional<String> chkRole(String id);
 
-    @Select("select * from member where id = #{insertedId}")
-    UserInfo getUserInfo(String insertedId);
+    @Select("select * from member where username = #{username}")
+    UserInfo getUserInfo(String username);
 }

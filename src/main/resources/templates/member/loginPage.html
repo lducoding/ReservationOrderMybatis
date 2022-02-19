@@ -6,10 +6,12 @@
 </head>
 <body>
 로그인
-<form action="/member/login" method="post">
-    <input type="text" name="id">
+<form action="/member/login" method="GET">
+    <input type="text" name="username">
     <input type="password" name="password">
     <input type="submit">
 </form>
+<br>
+<a href="/member/loginPage">로그인</a>
 </body>
 </html>

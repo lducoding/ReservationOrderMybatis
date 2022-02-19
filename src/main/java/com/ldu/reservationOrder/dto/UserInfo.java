@@ -12,4 +12,5 @@ public class UserInfo {
     private String birth;
     private String phone;
     private String email;
+    private String role;
 }
