@@ -42,8 +42,8 @@ public class BoardServiceTest {
 
     @Test
     public void chkRole권한체크() {
-        String id = "nu";
-        int integer = memberService.chkRole(id);
-        assertThat(integer).isEqualTo(0);
+        String id = "1";
+        String string = memberService.chkRole(id);
+        assertThat(string).isEqualTo("seller");
     }
 }

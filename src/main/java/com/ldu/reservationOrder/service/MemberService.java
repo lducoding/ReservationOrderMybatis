@@ -6,66 +6,84 @@ import com.ldu.reservationOrder.dto.UserInfo;
 import com.ldu.reservationOrder.mapper.MemberMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
 @Service
-@AllArgsConstructor
-public class MemberService implements UserDetailsService {
+public class MemberService implements UserDetailsService{
 
     @Autowired
     private MemberMapper memberMapper;
 
-    public void login(String username, String password) {
-        int chkRole = chkRole(username);
-        UserDetails userDetails = loadUserByUsername(username);
-    }
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
-    public int chkRole(String id) {
+    public String chkRole(String id) {
         Optional<String> role = memberMapper.chkRole(id);
-        if(role.isPresent()) {
-            if (role.get().equals("customer")) {
-                return 1;
-            } else if (role.equals("seller")) {
-                return 2;
-            }
-        }
-            return 0;
+        return role.get();
     }
 
-    @Transactional
-    public void joinUser(UserInfo userInfo) {
-        // 비밀번호 암호화
-        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        userInfo.setPassword(passwordEncoder.encode(userInfo.getPassword()));
-
-//        return memberMapper.save(userInfo.toEntity()).getId();
-    }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        // Optional<UserInfo> userEntityWrapper = memberMapper.getUserInfo(username);
-        UserInfo userInfo =  memberMapper.getUserInfo(username);
-        userInfo.setRole(memberMapper.chkRole(userInfo.getUsername()).get());
-        List<SimpleGrantedAuthority> authorities = new ArrayList<>();
+        UserInfo userInfo = memberMapper.getUserInfo(username);
+        userInfo.setPassword(passwordEncoder.encode(userInfo.getPassword()));
+        String role = chkRole(String.valueOf(userInfo.getId()));
+        userInfo.setRole(role);
 
-        if (userInfo.getRole().equals("admin")) {
-            authorities.add(new SimpleGrantedAuthority(Role.ADMIN.getValue()));
-        } else {
-            authorities.add(new SimpleGrantedAuthority(Role.MEMBER.getValue()));
-        }
+        UserDetails userDetails = new UserDetails() {
+            @Override
+            public Collection<? extends GrantedAuthority> getAuthorities() {
+                List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
+                grantedAuthorities.add(new SimpleGrantedAuthority(chkRole(String.valueOf(userInfo.getId()))));
+                return grantedAuthorities;
+            }
 
-        return new User(userInfo.getEmail(), userInfo.getPassword(), authorities);
+            @Override
+            public String getPassword() {
+                return userInfo.getPassword();
+            }
+
+            @Override
+            public String getUsername() {
+                return userInfo.getUsername();
+            }
+
+            @Override
+            public boolean isAccountNonExpired() {
+                return true;
+            }
+
+            @Override
+            public boolean isAccountNonLocked() {
+                return true;
+            }
+
+            @Override
+            public boolean isCredentialsNonExpired() {
+                return true;
+            }
+
+            @Override
+            public boolean isEnabled() {
+                return true;
+            }
+        };
+        return userDetails;
     }
+
 }
 
