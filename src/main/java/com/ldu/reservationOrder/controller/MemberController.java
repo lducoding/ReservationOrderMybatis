@@ -4,6 +4,8 @@ import com.ldu.reservationOrder.dto.UserInfo;
 import com.ldu.reservationOrder.service.MemberService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PostAuthorize;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.AuthenticatedPrincipal;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -27,11 +29,13 @@ public class MemberController {
     }
 
     @GetMapping("/seller/test")
+    @PreAuthorize("hasRole('ROLE_SELLER')")
     public String sellerTest(Model model) {
         return "seller";
     }
 
     @GetMapping("/customer/test")
+    @PreAuthorize("hasRole('ROLE_CUSTOMER')")
     public String customerTest() {
         return "customer";
     }
