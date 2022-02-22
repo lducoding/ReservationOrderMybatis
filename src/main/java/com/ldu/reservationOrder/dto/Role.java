@@ -6,9 +6,9 @@ import lombok.Getter;
 @AllArgsConstructor
 @Getter
 public enum Role {
-    SELLER("ROLE_SELLER"),
-    CUSTOMER("ROLE_CUSTOMER"),
-    ADMIN("ROLE_ADMIN");
+    SELLER("SELLER"),
+    CUSTOMER("CUSTOMER"),
+    ADMIN("ADMIN");
 
     private String value;
 }
