@@ -28,8 +28,16 @@ public class MemberController {
     private MemberService memberService;
 
     @GetMapping("/member/login")
-    public String loginPage(Model model) {
+    public String loginPage(Model model, @RequestParam Map<String, Object> params) {
+        if(params.get("logout")!=null && params.get("logout").equals("")) {
+            return "home";
+        }
         return "member/loginPage";
+    }
+
+    @GetMapping("member/loginPage")
+    public String loginSuccess(Model model) {
+        return "home";
     }
 
     @GetMapping("/seller/test")
