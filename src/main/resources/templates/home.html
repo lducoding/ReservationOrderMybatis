@@ -9,11 +9,16 @@
 소개 페이지
 <h1 th:inline="text">반갑습니다! [[${#httpServletRequest.remoteUser}]]!</h1><br>
 <a href="/res/showList">주문하러가기</a>
-<a href="/member/loginPage">로그인</a>
-<a href="/seller/test">seller</a>
+<div sec:authorize="hasRole('SELLER')">
+    <a href="/seller/test">seller</a>
+</div>
 <a href="/customer/test">customer</a>
 <br>
-<!--<p th:if="${#authentication.name}=='seller'">seller</p>-->
+<div sec:authorize ="isAnonymous()">
+    <form th:action="@{/member/loginPage}" method="get">
+        <input type="submit" value="로그인"/>
+    </form>
+</div>
 <div sec:authorize="isAuthenticated()">
     <form th:action="@{/logout}" method="post">
         <input type="submit" value="로그아웃"/>

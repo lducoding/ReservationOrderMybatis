@@ -14,4 +14,7 @@ public interface MemberMapper {
 
     @Select("select * from member where username = #{username}")
     UserInfo getUserInfo(String username);
+
+    @Select("select name from role where id = (select role_id from user_role where user_id = #{id})")
+    String getUserRole(int id);
 }

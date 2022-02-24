@@ -40,9 +40,10 @@ public class MemberService implements UserDetailsService{
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         UserInfo userEntity = memberMapper.getUserInfo(username);
         userEntity.setPassword(passwordEncoder.encode(userEntity.getPassword()));
+        userEntity.setRole(memberMapper.getUserRole(userEntity.getId()));
         List<GrantedAuthority> authorities = new ArrayList<>();
 
-        if (("seller").equals(username)) {
+        if (("seller").equals(userEntity.getRole())) {
             authorities.add(new SimpleGrantedAuthority(Role.SELLER.getValue()));
         } else {
             authorities.add(new SimpleGrantedAuthority(Role.CUSTOMER.getValue()));
