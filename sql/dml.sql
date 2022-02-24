@@ -13,5 +13,10 @@ INSERT INto time_table(res_id) values('5');
 INSERT INto time_table(res_id) values('6');
 INSERT INto time_table(res_id) values('7');
 
-INSERT INto member(id,pass,role,name,birth,phone,email) values('customer','1234','custoemr','고객','1994-04-07','010-2780-2249','lducoding@gmail.com');
-INSERT INto member(id,pass,role,name,birth,phone,email) values('seller','1234','seller','판매자','1984-12-12','016-1123-2233','lducoding@gmail.com');
+
+INSERT INto member(username ,password ,enabled ,birth,phone,email) values('seller','1234',1,'1984-12-12','016-1123-2233','lducoding@gmail.com');
+INSERT INto member(username ,password ,enabled ,birth,phone,email) values('customer','king',1,'1994-04-12','010-2780-2233','lducoding@gmail.com');
+INSERT INto role(name) values('seller');
+INSERT INto role(name) values('customer');
+INSERT INto user_role (user_id,role_id) values(1,1);
+INSERT INto user_role (user_id,role_id) values(2,2);
