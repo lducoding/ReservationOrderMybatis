@@ -12,7 +12,9 @@
 <div sec:authorize="hasRole('SELLER')">
     <a href="/seller/test">seller</a>
 </div>
-<a href="/customer/test">customer</a>
+<div sec:authorize="hasRole('CUSTOMER')">
+    <a href="/customer/test">customer</a>
+</div>
 <br>
 <div sec:authorize ="isAnonymous()">
     <form th:action="@{/member/loginPage}" method="get">

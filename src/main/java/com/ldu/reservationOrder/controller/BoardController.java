@@ -4,9 +4,11 @@ import com.ldu.reservationOrder.dto.ReservationTime;
 import com.ldu.reservationOrder.dto.Restaurant;
 import com.ldu.reservationOrder.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
@@ -37,5 +39,12 @@ public class BoardController {
         ReservationTime reservationTime = boardService.showReservation((String) params.get("res_id"));
         model.addAttribute("timeTable", reservationTime);
         return "board/resShowReservation";
+    }
+
+    @PostMapping("/res/reservation")
+//    @PreAuthorize("hasRole('CUSTOMER')")
+    public void reservation(Model model, @RequestParam Map<String, Object> params) {
+        System.out.println(params.get("username"));
+//        return "home";
     }
 }

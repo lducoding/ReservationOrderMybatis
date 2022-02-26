@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <style>
     td {
         border: solid 1px;
@@ -16,10 +18,18 @@
 <table>
     <tbody>
     <tr>
-        <td>
+        <td id="root">
             오전 12시 ~ 오전 12시 30분<br>
             <span th:if="${timeTable.getT0H()!=null}" th:text="|${timeTable.getT0H()}팀|"></span>
             <span th:unless="${timeTable.getT0H()!=null}">0팀</span>
+{{test}}
+<!--            <span sec:authentication="principal"></span>-->
+            <form action="/res/reservation" method="post">
+                <sec:csrfInput />
+                <input type="hidden" name="username" value="aa">
+                <sec:csrfInput />
+            <input type="submit" value="test">
+            </form>
         </td>
 
         <td>오전 12시 30분 ~ 오전 1시<br>
@@ -280,8 +290,29 @@
     </tr>
     </tbody>
 </table>
+<div sec:authorize="hasRole('CUSTOMER')">
+<button>예약하기</button>
+</div>
+
+<form method="POST" action="/res/reservation">
+    <input type="text" name="j_username" />
+    <input type="password" name="j_password" />
+
+<!--    <sec:csrfInput />-->
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+    <input type="submit">
+</form>
 
 
+<script>
+    const app = new Vue({
+        el: '#root',
+        data: {
+            test: "ttt",
+        },
+        methods: {},
+    });
+</script>
 
 </body>
 </html>
