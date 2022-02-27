@@ -24,12 +24,10 @@
             <span th:unless="${timeTable.getT0H()!=null}">0팀</span>
 {{test}}
 <!--            <span sec:authentication="principal"></span>-->
-            <form action="/res/reservation" method="post">
-                <sec:csrfInput />
-                <input type="hidden" name="username" value="aa">
-                <sec:csrfInput />
+        <form th:action="@{/res/reservation}" method="post">
+            <input type="hidden" name="username" v-model="test">
             <input type="submit" value="test">
-            </form>
+        </form>
         </td>
 
         <td>오전 12시 30분 ~ 오전 1시<br>
@@ -293,16 +291,6 @@
 <div sec:authorize="hasRole('CUSTOMER')">
 <button>예약하기</button>
 </div>
-
-<form method="POST" action="/res/reservation">
-    <input type="text" name="j_username" />
-    <input type="password" name="j_password" />
-
-<!--    <sec:csrfInput />-->
-    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-    <input type="submit">
-</form>
-
 
 <script>
     const app = new Vue({

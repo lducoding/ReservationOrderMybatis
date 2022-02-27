@@ -43,8 +43,8 @@ public class BoardController {
 
     @PostMapping("/res/reservation")
 //    @PreAuthorize("hasRole('CUSTOMER')")
-    public void reservation(Model model, @RequestParam Map<String, Object> params) {
+    public String reservation(Model model, @RequestParam Map<String, Object> params) {
         System.out.println(params.get("username"));
-//        return "home";
+        return "home";
     }
 }
