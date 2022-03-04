@@ -99,7 +99,6 @@ CREATE TABLE `user_role` (
 CREATE TABLE `restaurant_menu` (
                                    `restaurant_id` int NOT NULL,
                                    `menu` varchar(100) not null,
-                                   PRIMARY KEY (`restaurant_id`),
-                             CONSTRAINT `restaurant_id_FK` FOREIGN KEY (`restaurant_id`) REFERENCES `restaurant` (`id`)
+                                   CONSTRAINT `restaurant_id_FK` FOREIGN KEY (`restaurant_id`) REFERENCES `restaurant` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
 
