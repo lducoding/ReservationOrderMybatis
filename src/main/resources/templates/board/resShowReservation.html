@@ -22,12 +22,18 @@
             오전 12시 ~ 오전 12시 30분<br>
             <span th:if="${timeTable.getT0H()!=null}" th:text="|${timeTable.getT0H()}팀|"></span>
             <span th:unless="${timeTable.getT0H()!=null}">0팀</span>
-{{test}}
-<!--            <span sec:authentication="principal"></span>-->
-        <form th:action="@{/res/reservation}" method="post">
-            <input type="hidden" name="username" v-model="test">
-            <input type="submit" value="test">
-        </form>
+            <div sec:authorize="hasRole('CUSTOMER')">
+                <form th:action="@{/res/getResMenu}" method="get">
+                    <input type="hidden" name="resId" th:value="${resId}">
+                    <input type="submit" value="예약">
+                </form>
+            </div>
+            <div sec:authorize="hasRole('CUSTOMER')">
+                <form th:action="@{/res/reservation}" method="post">
+                    <input type="hidden" name="username" v-model="test">
+                    <input type="submit" value="test">
+                </form>
+            </div>
         </td>
 
         <td>오전 12시 30분 ~ 오전 1시<br>
@@ -288,15 +294,13 @@
     </tr>
     </tbody>
 </table>
-<div sec:authorize="hasRole('CUSTOMER')">
-<button>예약하기</button>
-</div>
 
 <script>
     const app = new Vue({
         el: '#root',
         data: {
             test: "ttt",
+            resId: "${resId}",
         },
         methods: {},
     });

@@ -8,6 +8,7 @@ import com.ldu.reservationOrder.repository.MemoryBoardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -37,7 +38,17 @@ public class BoardService {
         return boardMapper.restaurantStatus(id);
     }
 
-    public ReservationTime showReservation(String res_id) {
-        return boardMapper.showReservation(res_id);
+    /**
+     * 음식점 예약 시간 별 현황
+     */
+    public ReservationTime showReservation(String resId) {
+        return boardMapper.showReservation(resId);
+    }
+
+    /**
+     * 음식점 메뉴 가져오기
+     */
+    public ArrayList<String> getResMenu(String resId) {
+        return boardMapper.getResMenu(resId);
     }
 }

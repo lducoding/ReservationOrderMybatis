@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -36,9 +37,17 @@ public class BoardController {
 
     @GetMapping("/res/showReservation")
     public String showReservation(Model model, @RequestParam Map<String, Object> params) {
-        ReservationTime reservationTime = boardService.showReservation((String) params.get("res_id"));
+        ReservationTime reservationTime = boardService.showReservation((String) params.get("resId"));
         model.addAttribute("timeTable", reservationTime);
+        model.addAttribute("resId", params.get("resId"));
         return "board/resShowReservation";
+    }
+
+    @GetMapping("/res/getResMenu")
+    public String getResMenu(Model model, @RequestParam Map<String, Object> params) {
+        ArrayList<String> restaurantMenu = boardService.getResMenu((String) params.get("resId"));
+        model.addAttribute("restaurantMenu", restaurantMenu);
+        return "board/resMenu";
     }
 
     @PostMapping("/res/reservation")
