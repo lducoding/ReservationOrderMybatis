@@ -20,3 +20,9 @@ INSERT INto role(name) values('seller');
 INSERT INto role(name) values('customer');
 INSERT INto user_role (user_id,role_id) values(1,1);
 INSERT INto user_role (user_id,role_id) values(2,2);
+
+
+insert into restaurant_menu values(1, '고추바사삭');
+insert into restaurant_menu values(1, '갈비천왕');
+insert into restaurant_menu values(1, '굽네 오리지널');
+insert into restaurant_menu values(1, '고추 바사삭 순');
