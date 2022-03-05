@@ -6,6 +6,11 @@
 </head>
 <body>
 음식점 메뉴 나오고 실제 예약
-<span th:text="${restaurantMenu}"></span>
+<!--<span th:text="${restaurantMenu[0]}"></span>-->
+<table>
+    <tr th:each="menu :${restaurantMenu}">
+        <td th:text="${menu}"></td>
+    </tr>
+</table>
 </body>
 </html>
