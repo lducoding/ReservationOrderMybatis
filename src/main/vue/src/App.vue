@@ -1,26 +1,23 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <header-menu user="이동욱"></header-menu>
+  <div>메인페이지</div>
+
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import HeaderMenu from "@/components/HeaderMenu";
 export default {
-  name: 'App',
   components: {
-    HelloWorld
-  }
+    'header-menu': HeaderMenu
+  },
+  data() {
+    return {
+
+    }
+  },
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>

@@ -15,12 +15,10 @@ public class HomeController {
 
     @RequestMapping("/api/hello")
     public Map<String,String> hello(Model model) {
-
         Map<String,String> map = new HashMap<>();
         map.put("1","1");
         map.put("test","test");
         map.put("ldu","이동욱");
-
         return map;
     }
 
