@@ -13,7 +13,7 @@ import java.util.Map;
 @RestController
 public class HomeController {
 
-    @RequestMapping("/api/hello")
+    @RequestMapping("/res/hello")
     public Map<String,String> hello(Model model) {
         Map<String,String> map = new HashMap<>();
         map.put("1","1");
@@ -21,5 +21,6 @@ public class HomeController {
         map.put("ldu","이동욱");
         return map;
     }
+
 
 }
