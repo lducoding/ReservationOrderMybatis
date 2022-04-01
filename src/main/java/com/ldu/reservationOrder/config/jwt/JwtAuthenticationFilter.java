@@ -1,6 +1,7 @@
 package com.ldu.reservationOrder.config.jwt;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.ldu.reservationOrder.config.auth.PrincipalDetails;
 import com.ldu.reservationOrder.dto.UserInfo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -28,7 +29,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                     new UsernamePasswordAuthenticationToken(userInfo.getUsername(),userInfo.getPassword());
             Authentication authentication = authenticationManager.authenticate(usernamePasswordAuthenticationToken);
 
-            PrincipalDetails
+            PrincipalDetails principalDetails = (PrincipalDetails) authentication.getPrincipal();
         } catch (IOException e) {
             e.printStackTrace();
         }

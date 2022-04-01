@@ -2,6 +2,10 @@ package com.ldu.reservationOrder.dto;
 
 import lombok.Data;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 @Data
 public class UserInfo {
 
@@ -13,4 +17,11 @@ public class UserInfo {
     private String phone;
     private String email;
     private String role;
+
+    public List<String> getRoleList() {
+        if(this.role.length() > 0) {
+            return Arrays.asList(this.role.split(","));
+        }
+        return new ArrayList<>();
+    }
 }
