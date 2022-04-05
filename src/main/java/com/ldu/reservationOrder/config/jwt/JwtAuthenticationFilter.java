@@ -14,6 +14,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -53,6 +54,12 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                 .withClaim("username", principalDetails.getUserInfo().getUsername())
                 .sign(Algorithm.HMAC512("donguking")); // 암호화 비밀키
 
-        response.addHeader("Authorization","Bearer "+jwtToken);
+//        response.addHeader("Authorization","Bearer "+jwtToken);
+        Cookie jwtCookie = new Cookie("Authorization", "Bearer "+jwtToken);
+        jwtCookie.setMaxAge(60*30);
+        jwtCookie.setPath("/");
+        jwtCookie.setSecure(true);
+//        jwtCookie.setHttpOnly(true);
+        response.addCookie(jwtCookie);
     }
 }

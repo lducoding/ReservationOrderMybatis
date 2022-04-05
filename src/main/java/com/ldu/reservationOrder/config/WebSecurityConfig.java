@@ -50,7 +50,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/home")
                 .access("hasRole('ROLE_ADMIN')")
                 .anyRequest().permitAll();
-
     }
 
     @Bean
