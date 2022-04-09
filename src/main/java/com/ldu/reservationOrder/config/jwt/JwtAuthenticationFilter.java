@@ -25,6 +25,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
     private final AuthenticationManager authenticationManager;
 
+    // login 요청시 실행되는 함수
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
 
@@ -49,7 +50,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
         String jwtToken = JWT.create()
                 .withSubject("lduToken") // 토큰 이름
-                .withExpiresAt(new Date(System.currentTimeMillis()+(60000*10))) // 토큰 유효시간
+                .withExpiresAt(new Date(System.currentTimeMillis()+(60000*30))) // 토큰 유효시간
                 .withClaim("id", principalDetails.getUserInfo().getId())
                 .withClaim("username", principalDetails.getUserInfo().getUsername())
                 .sign(Algorithm.HMAC512("donguking")); // 암호화 비밀키
