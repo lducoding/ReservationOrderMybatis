@@ -1,9 +1,9 @@
 <template>
   <div id="app">
-    <login-page></login-page>
     <div>
-      <router-link to="/res/hello">hello</router-link>
-      <router-link to="/hello/page">hihi</router-link>
+      <router-link to="/res/hello">hello</router-link><br>
+      <router-link to="/hello/page">hihi</router-link><br>
+      <router-link to="/login">login</router-link><br>
     </div>
     <router-view></router-view>
   </div>
@@ -11,14 +11,10 @@
 
 <script>
 import router from './router/routes'
-import loginPage from './components/LoginPage'
 
 export default {
   router,
   name: 'App',
-  components: {
-    loginPage
-  }
 }
 </script>
 
