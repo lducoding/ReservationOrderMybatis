@@ -61,6 +61,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         jwtCookie.setPath("/");
         jwtCookie.setSecure(true);
 //        jwtCookie.setHttpOnly(true);
+        response.addHeader("username", principalDetails.getUserInfo().getUsername());
         response.addCookie(jwtCookie);
     }
 }
