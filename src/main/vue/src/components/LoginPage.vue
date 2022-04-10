@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="loginSuccess">로그인 성공</div>
+    <div v-if="loginSuccess">{{ name }}님 환영합니다.</div>
     <div v-else>
       로그인해 주십시오<br>{{username}}
       <form v-on:submit.prevent="submitForm">
@@ -27,6 +27,7 @@ export default {
       loginSuccess: false,
       username: "",
       password: "",
+      name: "",
     }
   },
   methods: {
@@ -41,6 +42,7 @@ export default {
           .then(function(response){
             console.log(response);
             if(response.status == 200) {
+              thisData.name = response.headers['username'];
               thisData.loginSuccess = true;
             }
           })
