@@ -4,10 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.Map;
@@ -15,20 +13,13 @@ import java.util.Map;
 @RestController
 public class HomeController {
 
-    @RequestMapping("/res/hello")
-    public Map<String,String> hello(Model model, HttpServletResponse response) {
+    @GetMapping("/res/hello")
+    public String hello(Model model, HttpServletResponse response) {
         Map<String,String> map = new HashMap<>();
         map.put("1","1");
         map.put("test","test");
         map.put("ldu","이동욱");
-
-        Cookie jwtCookie = new Cookie("Authorization", "jwtToken");
-        jwtCookie.setMaxAge(60*30);
-        jwtCookie.setPath("/");
-        jwtCookie.setSecure(true);
-//        jwtCookie.setHttpOnly(true);
-        response.addCookie(jwtCookie);
-        return map;
+        return "123";
     }
 
 

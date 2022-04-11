@@ -1,6 +1,9 @@
 <template>
   <div>
-    <div v-if="loginSuccess">{{ name }}님 환영합니다.</div>
+    <div v-if="loginSuccess">
+      {{ name }}님 환영합니다.<br>
+      <button @click="btnClick">서버 통신</button>
+    </div>
     <div v-else>
       로그인해 주십시오<br>{{username}}
       <form v-on:submit.prevent="submitForm">
@@ -48,6 +51,13 @@ export default {
           })
           .catch(function(error){
             console.log(error);
+          });
+    },
+    btnClick() {
+      axios.get('/res/hello')
+          .then(res => {
+            console.log(res.data);  //값을 불러왔을때
+            //this.test = res.data['ldu'];
           });
     }
   }

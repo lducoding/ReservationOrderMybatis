@@ -25,7 +25,7 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
 
     public JwtAuthorizationFilter(AuthenticationManager authenticationManager, MemberMapper memberMapper) {
         super(authenticationManager);
-        memberMapper = this.memberMapper;
+        this.memberMapper = memberMapper;
     }
 
     @Override
