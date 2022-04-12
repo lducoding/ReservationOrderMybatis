@@ -23,7 +23,7 @@ import org.springframework.web.filter.CorsFilter;
 
 @Configuration
 @EnableWebSecurity
-//@EnableGlobalMethodSecurity(prePostEnabled = true)
+@EnableGlobalMethodSecurity(securedEnabled = true)
 @RequiredArgsConstructor
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
@@ -41,14 +41,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .addFilter(new JwtAuthenticationFilter(authenticationManager()))
                 .addFilter(new JwtAuthorizationFilter(authenticationManager(), memberMapper))
                 .authorizeRequests()
-                .antMatchers("/res/hello").permitAll()
-//                .access("hasRole('ROLE_SELLER')")
-                .antMatchers("/api/v1/manager/**")
-                .access("hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMIN')")
-                .antMatchers("/api/v1/admin/**")
-                .access("hasRole('ROLE_ADMIN')")
-                .antMatchers("/home")
-                .access("hasRole('ROLE_ADMIN')")
+//                .antMatchers("/res/hello")
+//                .access("hasRole('user')")
+//                .antMatchers("/api/v1/manager/**")
+//                .access("hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMIN')")
+//                .antMatchers("/api/v1/admin/**")
+//                .access("hasRole('ROLE_ADMIN')")
+//                .antMatchers("/home")
+//                .access("hasRole('ROLE_ADMIN')")
                 .anyRequest().permitAll();
     }
 

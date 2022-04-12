@@ -5,7 +5,7 @@
       <button @click="btnClick">서버 통신</button>
     </div>
     <div v-else>
-      로그인해 주십시오<br>{{username}}
+      로그인해 주십시오<br>
       <form v-on:submit.prevent="submitForm">
         <div>
           <label for="username">id:</label>
