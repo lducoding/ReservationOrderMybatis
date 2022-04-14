@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-if="loginSuccess">
-      {{ name }}님 환영합니다.<br>
+      {{ name }}님 환영합니다.<br>{{jwt}}
       <button @click="btnClick">서버 통신</button>
     </div>
     <div v-else>
@@ -31,6 +31,7 @@ export default {
       username: "",
       password: "",
       name: "",
+      jwt: "",
     }
   },
   methods: {
@@ -46,6 +47,7 @@ export default {
             console.log(response);
             if(response.status == 200) {
               thisData.name = response.headers['username'];
+              thisData.jwt = response.headers['authorization'];
               thisData.loginSuccess = true;
             }
           })
@@ -54,7 +56,11 @@ export default {
           });
     },
     btnClick() {
-      axios.get('/res/hello')
+      axios.get('/res/hello', {
+        headers: {
+          Authorization: `Bearer ` + this.jwt
+        }
+      })
           .then(res => {
             console.log(res.data);  //값을 불러왔을때
             //this.test = res.data['ldu'];

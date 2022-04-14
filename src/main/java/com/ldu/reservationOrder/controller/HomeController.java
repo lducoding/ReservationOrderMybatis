@@ -14,7 +14,7 @@ import java.util.Map;
 @RestController
 public class HomeController {
 
-//    @Secured("ROLE_USER")
+    @Secured("ROLE_USER")
     @GetMapping("/res/hello")
     public String hello(Model model, HttpServletResponse response) {
         Map<String,String> map = new HashMap<>();

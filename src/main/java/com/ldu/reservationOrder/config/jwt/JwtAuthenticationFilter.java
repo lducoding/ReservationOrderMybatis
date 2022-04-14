@@ -55,7 +55,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                 .withClaim("username", principalDetails.getUserInfo().getUsername())
                 .sign(Algorithm.HMAC512("donguking")); // 암호화 비밀키
 
-//        response.addHeader("Authorization","Bearer "+jwtToken);
+        response.addHeader("Authorization","Bearer "+jwtToken);
         Cookie jwtCookie = new Cookie("Authorization", jwtToken);
         jwtCookie.setMaxAge(60*30);
         jwtCookie.setPath("/");
