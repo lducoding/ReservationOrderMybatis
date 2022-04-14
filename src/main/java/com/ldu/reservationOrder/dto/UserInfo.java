@@ -16,11 +16,11 @@ public class UserInfo {
     private String birth;
     private String phone;
     private String email;
-    private String roles;
+    private String role;
 
     public List<String> getRoleList() {
-        if(this.roles.length() > 0) {
-            return Arrays.asList(this.roles.split(","));
+        if(this.role.length() > 0) {
+            return Arrays.asList(this.role.split(","));
         }
         return new ArrayList<>();
     }
