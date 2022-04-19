@@ -58,7 +58,7 @@ export default {
     btnClick() {
       axios.get('/res/hello', {
         headers: {
-          Authorization: `Bearer ` + this.jwt
+          Authorization: this.jwt
         }
       })
           .then(res => {
