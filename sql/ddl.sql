@@ -103,11 +103,58 @@ CREATE TABLE `restaurant_menu` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
 
 CREATE table RES_USER (
-                          user_id bigint not null auto_increment primary key,
+                          res_user_id bigint not null auto_increment primary key,
                           pass varchar(100),
                           name varchar(40),
                           email varchar(50),
                           roles varchar(10),
                           birth varchar(20),
                           mileage int
+)
+
+CREATE table RESTAURANT (
+                            restaurant_id bigint not null auto_increment primary key,
+                            res_user_id bigint,
+                            goal_id bigint,
+                            location varchar(100),
+                            restaurant_name varchar(100),
+                            category varchar(10),
+                            standard_time int,
+                            FOREIGN KEY (res_user_id)
+                                REFERENCES RES_USER(res_user_id) ON DELETE CASCADE
+)
+
+CREATE table RESERVATION (
+                             reservation_id bigint not null auto_increment primary key,
+                             res_user_id bigint,
+                             restaurant_id bigint,
+                             reservation_date varchar(30),
+                             reservation_status varchar(10),
+                             FOREIGN KEY (res_user_id)
+                                REFERENCES RES_USER(res_user_id) ON DELETE CASCADE,
+                             FOREIGN KEY (restaurant_id)
+                                REFERENCES RESTAURANT(restaurant_id) ON DELETE CASCADE
+)
+
+CREATE table MENU (
+                      menu_id bigint not null auto_increment,
+                      restaurant_id bigint not null,
+                      menu_name varchar(20),
+                      menu_price int,
+                      menu_img blob,
+                      FOREIGN KEY (restaurant_id)
+                        REFERENCES RESTAURANT(restaurant_id) ON DELETE CASCADE,
+                      PRIMARY KEY(menu_id, restaurant_id)
+)
+
+CREATE table GOAL (
+                      goal_id bigint not null auto_increment primary key,
+                      restaurant_id bigint,
+                      goal_type varchar(10),
+                      goal_money int,
+                      recent_money int,
+                      success varchar(1),
+                      register_data date,
+                      FOREIGN KEY (restaurant_id)
+                          REFERENCES RESTAURANT(restaurant_id) ON DELETE CASCADE
 )
