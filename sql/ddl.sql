@@ -102,3 +102,12 @@ CREATE TABLE `restaurant_menu` (
                                    CONSTRAINT `restaurant_id_FK` FOREIGN KEY (`restaurant_id`) REFERENCES `restaurant` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
 
+CREATE table RES_USER (
+                          user_id bigint not null auto_increment primary key,
+                          pass varchar(100),
+                          name varchar(40),
+                          email varchar(50),
+                          roles varchar(10),
+                          birth varchar(20),
+                          mileage int
+)
