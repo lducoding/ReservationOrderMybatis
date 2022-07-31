@@ -1,7 +1,7 @@
 package com.ldu.reservationOrder.mapper;
 
-import com.ldu.reservationOrder.dto.ReservationTime;
-import com.ldu.reservationOrder.dto.Restaurant;
+import com.ldu.reservationOrder.model.ReservationTime;
+import com.ldu.reservationOrder.model.Restaurant;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 

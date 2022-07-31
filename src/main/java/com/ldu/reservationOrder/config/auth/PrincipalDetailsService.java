@@ -1,6 +1,6 @@
 package com.ldu.reservationOrder.config.auth;
 
-import com.ldu.reservationOrder.dto.UserInfo;
+import com.ldu.reservationOrder.model.UserInfo;
 import com.ldu.reservationOrder.mapper.MemberMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;

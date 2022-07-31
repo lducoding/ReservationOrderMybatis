@@ -1,10 +1,8 @@
 package com.ldu.reservationOrder.service;
 
-import com.ldu.reservationOrder.dto.ReservationTime;
-import com.ldu.reservationOrder.dto.Restaurant;
+import com.ldu.reservationOrder.model.ReservationTime;
+import com.ldu.reservationOrder.model.Restaurant;
 import com.ldu.reservationOrder.mapper.BoardMapper;
-import com.ldu.reservationOrder.repository.BoardRepository;
-import com.ldu.reservationOrder.repository.MemoryBoardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

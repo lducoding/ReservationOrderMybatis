@@ -1,6 +1,5 @@
 package com.ldu.reservationOrder.controller;
 
-import com.ldu.reservationOrder.dto.Restaurant;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

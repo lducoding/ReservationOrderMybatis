@@ -1,6 +1,6 @@
 package com.ldu.reservationOrder.config.auth;
 
-import com.ldu.reservationOrder.dto.UserInfo;
+import com.ldu.reservationOrder.model.UserInfo;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -28,12 +28,12 @@ public class PrincipalDetails implements UserDetails {
 
     @Override
     public String getPassword() {
-        return userInfo.getPassword();
+        return userInfo.getPass();
     }
 
     @Override
     public String getUsername() {
-        return userInfo.getUsername();
+        return userInfo.getEmail();
     }
 
     @Override

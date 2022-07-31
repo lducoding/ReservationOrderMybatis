@@ -1,10 +1,9 @@
 package com.ldu.reservationOrder.controller;
 
-import com.ldu.reservationOrder.dto.ReservationTime;
-import com.ldu.reservationOrder.dto.Restaurant;
+import com.ldu.reservationOrder.model.ReservationTime;
+import com.ldu.reservationOrder.model.Restaurant;
 import com.ldu.reservationOrder.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

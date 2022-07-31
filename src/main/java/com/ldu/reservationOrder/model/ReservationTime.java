@@ -1,4 +1,4 @@
-package com.ldu.reservationOrder.dto;
+package com.ldu.reservationOrder.model;
 
 import lombok.Data;
 
