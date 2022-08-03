@@ -30,6 +30,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private final CorsFilter corsFilter;
     private final MemberMapper memberMapper;
 
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
@@ -41,6 +42,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .addFilter(new JwtAuthenticationFilter(authenticationManager()))
                 .addFilter(new JwtAuthorizationFilter(authenticationManager(), memberMapper))
                 .authorizeRequests()
+                .antMatchers("/login").authenticated()
 //                .antMatchers("/res/hello")
 //                .access("hasRole('user')")
 //                .antMatchers("/api/v1/manager/**")

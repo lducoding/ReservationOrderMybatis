@@ -13,7 +13,7 @@ public interface MemberMapper {
     Optional<String> chkRole(String id);
 
     @Select("select * from RES_USER where email = #{email}")
-    UserInfo getUserInfo(String username);
+    UserInfo getUserInfo(String email);
 
     @Select("select name from role where id = (select role_id from user_role where user_id = #{id})")
     String getUserRole(int id);

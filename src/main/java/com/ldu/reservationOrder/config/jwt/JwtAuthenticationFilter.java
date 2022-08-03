@@ -25,7 +25,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
     private final AuthenticationManager authenticationManager;
 
-    // login 요청시 실행되는 함수
+    // POST로 /login 요청시 실행되는 함수
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
 
@@ -33,9 +33,8 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
             ObjectMapper objectMapper = new ObjectMapper();
             UserInfo userInfo = objectMapper.readValue(request.getInputStream(), UserInfo.class);
             UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken =
-                    new UsernamePasswordAuthenticationToken(userInfo.getUsername(),userInfo.getPassword());
+                    new UsernamePasswordAuthenticationToken(userInfo.getEmail(),userInfo.getPass());
             Authentication authentication = authenticationManager.authenticate(usernamePasswordAuthenticationToken);
-//            PrincipalDetails principalDetails = (PrincipalDetails) authentication.getPrincipal();
             return authentication;
         } catch (IOException e) {
             e.printStackTrace();
@@ -51,8 +50,8 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         String jwtToken = JWT.create()
                 .withSubject("lduToken") // 토큰 이름
                 .withExpiresAt(new Date(System.currentTimeMillis()+(60000*30))) // 토큰 유효시간
-                .withClaim("id", principalDetails.getUserInfo().getId())
-                .withClaim("username", principalDetails.getUserInfo().getUsername())
+                .withClaim("id", principalDetails.getUserInfo().getRes_user_id())
+                .withClaim("username", principalDetails.getUserInfo().getEmail())
                 .sign(Algorithm.HMAC512("donguking")); // 암호화 비밀키
 
 //        response.addHeader("Authorization","Bearer "+jwtToken);
@@ -61,7 +60,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         jwtCookie.setPath("/");
         jwtCookie.setSecure(true);
 //        jwtCookie.setHttpOnly(true);
-        response.addHeader("username", principalDetails.getUserInfo().getUsername());
+        response.addHeader("username", principalDetails.getUserInfo().getEmail());
         response.addCookie(jwtCookie);
     }
 }

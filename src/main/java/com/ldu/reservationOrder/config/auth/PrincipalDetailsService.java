@@ -9,18 +9,19 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+// http://localhost:8080/login 하면 일로 와야 하는데 안옴 formlogin().disabled해서
 @Service
 @RequiredArgsConstructor
 public class PrincipalDetailsService implements UserDetailsService {
 
-    @Autowired
-    private MemberMapper memberMapper;
+    private final MemberMapper memberMapper;
 
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 //        User userEntity = userRepository.findByUsername(username);
-        UserInfo userInfo = memberMapper.getUserInfo(username);
-        return new PrincipalDetails(userInfo);
+        UserInfo userInfo = memberMapper.getUserInfo(email);
+        PrincipalDetails principalDetails = new PrincipalDetails(userInfo);
+        return principalDetails;
     }
 }
