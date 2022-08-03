@@ -43,14 +43,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .addFilter(new JwtAuthorizationFilter(authenticationManager(), memberMapper))
                 .authorizeRequests()
                 .antMatchers("/login").authenticated()
-//                .antMatchers("/res/hello")
-//                .access("hasRole('user')")
-//                .antMatchers("/api/v1/manager/**")
-//                .access("hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMIN')")
-//                .antMatchers("/api/v1/admin/**")
-//                .access("hasRole('ROLE_ADMIN')")
-//                .antMatchers("/home")
-//                .access("hasRole('ROLE_ADMIN')")
                 .anyRequest().permitAll();
     }
 
@@ -58,4 +50,5 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public PasswordEncoder passwordEncoder() {
         return PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
+
 }
