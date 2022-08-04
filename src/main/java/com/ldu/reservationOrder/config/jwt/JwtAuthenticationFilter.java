@@ -22,8 +22,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.xml.bind.DatatypeConverter;
 import java.io.IOException;
+import java.net.URLEncoder;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -55,37 +55,24 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         return null;
     }
 
-    private Map<String,Object> getJwtHeader(){
-        Map<String,Object> jwtHeader = new HashMap<>();
-        jwtHeader.put("alg","HS256");
-        jwtHeader.put("typ","JWT");
-        jwtHeader.put("create", System.currentTimeMillis());
-
-        return jwtHeader;
-    }
-
     @Override
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authResult) throws IOException, ServletException {
         PrincipalDetails principalDetails = (PrincipalDetails) authResult.getPrincipal();
 
-//        String jwtToken = Jwts.builder().setSubject(principalDetails.getUserInfo().getEmail()).signWith(SignatureAlgorithm.HS256, DatatypeConverter.parseBase64Binary("donguking"))
-//                .setExpiration(new Date(System.currentTimeMillis() + 1000000)).compact();
-
-
         String jwtToken = JWT.create()
                 .withSubject("lduToken") // 토큰 이름
                 .withExpiresAt(new Date(System.currentTimeMillis()+(60000*30))) // 토큰 유효시간
-                .withClaim("id", principalDetails.getUserInfo().getRes_user_id())
-                .withClaim("username", principalDetails.getUserInfo().getEmail())
+//                .withClaim("id", principalDetails.getUserInfo().getRes_user_id())
+                .withClaim("email", principalDetails.getUserInfo().getEmail())
                 .sign(Algorithm.HMAC512("donguking")); // 암호화 비밀키
 
-        response.addHeader("Authorization","Bearer "+jwtToken);
-        Cookie jwtCookie = new Cookie("Authorization", "Bearer "+jwtToken);
+//        response.addHeader("Authorization","Bearer"+jwtToken);
+        Cookie jwtCookie = new Cookie("Authorization", "Bearer"+jwtToken);
         jwtCookie.setMaxAge(60*30*60);
         jwtCookie.setPath("/");
-        jwtCookie.setSecure(true);
+//        jwtCookie.setSecure(true);
 //        jwtCookie.setHttpOnly(true);
-        response.addHeader("username", principalDetails.getUserInfo().getEmail());
+//        response.addHeader("username", principalDetails.getUserInfo().getEmail());
         response.addCookie(jwtCookie);
     }
 }

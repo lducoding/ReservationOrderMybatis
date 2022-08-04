@@ -33,9 +33,9 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
         Cookie cookie2 = null;
         for (Cookie cookie : cookies ) {
             if(cookie.getName().equals("Authorization")) {
-                String jwtToken = cookie.getValue().replace("Bearer ", "");
+                String jwtToken = cookie.getValue().replace("Bearer", "");
 //                String jwtToken = request.getHeader("Authorization").replace("Bearer ", "");
-                String username = JWT.require(Algorithm.HMAC512("donguking")).build().verify(jwtToken).getClaim("username").asString();
+                String username = JWT.require(Algorithm.HMAC512("donguking")).build().verify(jwtToken).getClaim("email").asString();
 
                 if (username != null) {
                     UserInfo userEntity = memberMapper.getUserInfo(username);

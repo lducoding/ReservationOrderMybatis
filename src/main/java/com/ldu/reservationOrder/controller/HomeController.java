@@ -16,7 +16,8 @@ import java.util.Map;
 @RestController
 public class HomeController {
 
-    @PreAuthorize("hasRole('CUSTOMER')")
+    @Secured("ROLE_CUSTOMER")
+    //@PreAuthorize("hasRole('CUSTOMER')")  // config에서 prePostEnabled = true 설정해야 사용가능
     @GetMapping("/res/hello")
     public String hello(Model model, HttpServletResponse response) {
         Map<String,String> map = new HashMap<>();
