@@ -2,6 +2,9 @@ package com.ldu.reservationOrder.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.ProviderManager;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
@@ -20,4 +23,6 @@ public class CorsConfig {
         source.registerCorsConfiguration("/api/**", config); // 이 경로로 들어오는 건 위 요청을 해주겠다?
         return new CorsFilter(source);
     }
+
+
 }
