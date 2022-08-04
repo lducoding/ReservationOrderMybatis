@@ -107,7 +107,7 @@ CREATE table RES_USER (
                           pass varchar(100),
                           name varchar(40),
                           email varchar(50),
-                          roles varchar(10),
+                          roles varchar(20),
                           birth varchar(20),
                           mileage int
 )
