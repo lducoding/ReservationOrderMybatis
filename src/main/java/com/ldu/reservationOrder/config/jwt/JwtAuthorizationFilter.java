@@ -33,7 +33,8 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
         Cookie cookie2 = null;
         for (Cookie cookie : cookies ) {
             if(cookie.getName().equals("Authorization")) {
-                String jwtToken = cookie.getValue();
+                String jwtToken = cookie.getValue().replace("Bearer ", "");
+//                String jwtToken = request.getHeader("Authorization").replace("Bearer ", "");
                 String username = JWT.require(Algorithm.HMAC512("donguking")).build().verify(jwtToken).getClaim("username").asString();
 
                 if (username != null) {
@@ -46,7 +47,7 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
 
                     // 강제로 시큐리티의 세션에 접근하여 Authentication 객체를 저장
                     SecurityContextHolder.getContext().setAuthentication(authentication);    // 시큐리티를 저장할 수 있는 세션공간 SecurityContextHolder.getContext()
-                    System.out.println("dudududu" + principalDetails.getUserInfo().getRoles());
+                    System.out.println("권한은: " + principalDetails.getUserInfo().getRoles());
                     chain.doFilter(request, response);
                 } else {
                     System.out.println("jwt 쿠키가 없음");

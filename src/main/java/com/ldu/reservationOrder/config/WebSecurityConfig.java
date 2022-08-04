@@ -42,7 +42,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .addFilter(new JwtAuthenticationFilter(authenticationManager()))
                 .addFilter(new JwtAuthorizationFilter(authenticationManager(), memberMapper))
                 .authorizeRequests()
-                .antMatchers("/login").authenticated()
+//                .antMatchers("/login").authenticated()
                 .anyRequest().permitAll();
     }
 
