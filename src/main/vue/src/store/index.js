@@ -1,17 +1,13 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import createPersistedState from 'vuex-persistedstate';
-import moduleName from './moduleName';
+import modules from './modules';
 
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
-    modules: moduleName,
+    modules,
     plugins: [
-        createPersistedState({
-            paths: ['moduleName'],
-        })
+        createPersistedState()
 ]
 })
-
-export default store;
