@@ -31,6 +31,7 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws IOException, ServletException {
         Cookie[] cookies = request.getCookies();
         Cookie cookie2 = null;
+        if(cookies!=null) {
         for (Cookie cookie : cookies ) {
             if(cookie.getName().equals("Authorization")) {
                 String jwtToken = cookie.getValue().replace("Bearer", "");
@@ -52,6 +53,7 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
                     System.out.println("jwt 쿠키가 없음");
                 }
             }
+        }
         }
         chain.doFilter(request,response);
         // header 방식
