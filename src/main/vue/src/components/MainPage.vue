@@ -274,6 +274,7 @@ export default {
       name: '',
       accessToken: null,
       refreshToken: "",
+      shopData: []
     }
   },
   created() {
