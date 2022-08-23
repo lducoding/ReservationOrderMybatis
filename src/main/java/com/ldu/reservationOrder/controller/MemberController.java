@@ -1,6 +1,7 @@
 package com.ldu.reservationOrder.controller;
 
 import com.ldu.reservationOrder.service.MemberService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
@@ -12,9 +13,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.Map;
 
 @Controller
+@RequiredArgsConstructor
 public class MemberController {
-    @Autowired
-    private MemberService memberService;
+    private final MemberService memberService;
 
     @GetMapping("/member/login")
     public String loginPage(Model model, @RequestParam Map<String, Object> params) {
