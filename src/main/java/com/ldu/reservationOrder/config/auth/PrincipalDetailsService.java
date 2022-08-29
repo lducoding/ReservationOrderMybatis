@@ -1,9 +1,8 @@
 package com.ldu.reservationOrder.config.auth;
 
-import com.ldu.reservationOrder.model.UserInfo;
-import com.ldu.reservationOrder.mapper.MemberMapper;
+import com.ldu.reservationOrder.entity.UserInfo;
+import com.ldu.reservationOrder.mapper.MemberRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -14,7 +13,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class PrincipalDetailsService implements UserDetailsService {
 
-    private final MemberMapper memberMapper;
+    private final MemberRepository memberMapper;
 
 
     @Override

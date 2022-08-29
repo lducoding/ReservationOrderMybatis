@@ -3,8 +3,8 @@ package com.ldu.reservationOrder.config.jwt;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.ldu.reservationOrder.config.auth.PrincipalDetails;
-import com.ldu.reservationOrder.model.UserInfo;
-import com.ldu.reservationOrder.mapper.MemberMapper;
+import com.ldu.reservationOrder.entity.UserInfo;
+import com.ldu.reservationOrder.mapper.MemberRepository;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -20,9 +20,9 @@ import java.io.IOException;
 
 public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
 
-    private MemberMapper memberMapper;
+    private MemberRepository memberMapper;
 
-    public JwtAuthorizationFilter(AuthenticationManager authenticationManager, MemberMapper memberMapper) {
+    public JwtAuthorizationFilter(AuthenticationManager authenticationManager, MemberRepository memberMapper) {
         super(authenticationManager);
         this.memberMapper = memberMapper;
     }

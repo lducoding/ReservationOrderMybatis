@@ -1,6 +1,6 @@
 package com.ldu.reservationOrder.config.auth;
 
-import com.ldu.reservationOrder.model.UserInfo;
+import com.ldu.reservationOrder.entity.UserInfo;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

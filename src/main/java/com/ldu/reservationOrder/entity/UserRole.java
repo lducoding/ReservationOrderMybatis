@@ -1,6 +1,5 @@
-package com.ldu.reservationOrder.model;
+package com.ldu.reservationOrder.entity;
 
-import lombok.Data;
 import lombok.Getter;
 
 @Getter

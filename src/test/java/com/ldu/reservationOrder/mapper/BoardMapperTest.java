@@ -16,7 +16,7 @@ public class BoardMapperTest {
     private BoardMapper boardMapper;
 
     @Autowired
-    private MemberMapper memberMapper;
+    private MemberRepository memberMapper;
 
     @Test
     public void 모든레스토랑불러오기() {

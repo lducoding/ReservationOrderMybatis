@@ -1,14 +1,7 @@
-package com.ldu.reservationOrder.model;
+package com.ldu.reservationOrder.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
-import org.springframework.data.relational.core.mapping.Column;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @Data
 @JsonIgnoreProperties( ignoreUnknown = true )
