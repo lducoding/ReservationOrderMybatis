@@ -14,7 +14,7 @@ public class RestaurantService {
 
     private final RestaurantMapper restaurantMapper;
 
-    public Optional<List<RestaurantDto>> getRestaurantLists() {
+    public List<RestaurantDto> getRestaurantLists() {
         return restaurantMapper.getRestaurantLists();
     }
 }

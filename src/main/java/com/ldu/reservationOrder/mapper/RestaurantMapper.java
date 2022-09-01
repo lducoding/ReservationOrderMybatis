@@ -11,5 +11,7 @@ import java.util.Optional;
 public interface RestaurantMapper {
 
     @Select("select * from restaurant")
-    Optional<List<RestaurantDto>> getRestaurantLists();
+    List<RestaurantDto> getRestaurantLists();
+
+
 }
