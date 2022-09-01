@@ -9,6 +9,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,11 +22,12 @@ public class RestaurantController {
     private final RestaurantService restaurantService;
 
     @GetMapping("/restaurants")
-    public ResponseEntity<PageInfo> getRestaurantLists(HttpServletRequest req) {
+    public ResponseEntity<PageInfo> getRestaurantLists(@RequestParam(defaultValue = "1") Integer pageNum,
+                                                       @RequestParam(defaultValue = "3") Integer pageSize) {
         HttpHeaders httpHeaders = new HttpHeaders();
-        List<RestaurantDto> restaurantLists = restaurantService.getRestaurantLists();
-        PageHelper.startPage(req);
-        PageInfo<RestaurantDto> pageingRestaurantLists = PageInfo.of(restaurantLists);
-        return new ResponseEntity<PageInfo> (pageingRestaurantLists, httpHeaders, HttpStatus.OK);
+        PageHelper.startPage(pageNum, pageSize);
+        PageInfo<RestaurantDto> restaurantDtoPageInfo = PageInfo.of(restaurantService.getRestaurantLists());
+
+        return new ResponseEntity<PageInfo> (restaurantDtoPageInfo, httpHeaders, HttpStatus.OK);
     }
 }
