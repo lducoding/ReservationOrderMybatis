@@ -13,6 +13,16 @@ pagehelper:
   reasonable: true
   support-methods-arguments: true
 
+mybatis:
+  type-aliases-package: com.ldu.reservationOrder
+  configuration:
+    map-underscore-to-camel-case: true
+
+logging:
+  level:
+    com.ldu.reservationOrder.mapper: trace
+
+
 
 #project.base-dir=file:////Users/ldu/workspace/ReservationOrder
 #spring.thymeleaf.prefix=${project.base-dir}/src/main/resources/templates/
