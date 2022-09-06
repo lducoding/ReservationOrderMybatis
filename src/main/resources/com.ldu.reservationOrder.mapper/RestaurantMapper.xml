@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hello.itemservice.repository.mybatis.ItemMapper">
+
+    <!-- xml에서 특수문자 추가로 필요하면 검색/ CDATA 사용하는 방법도 있다. -->
+    <!--    < : &lt;-->
+    <!--    > : &gt;-->
+    <!--    & : &amp;-->
+    <!--  useGeneratedKeys 는 자동으로 키 생성 keyProperty는 자동생성 키 컬럼명 -->
+    <insert id="registerRestaurant" useGeneratedKeys="true" keyProperty="restaurant_id">
+        insert into RESTAURANT
+        (res_user_id, goal_id, location, restaurant_name, category, standard_time)
+        values (#{res_user_id}, #{goal_id}, #{location}, #{restaurant_name}, #{category}, #{standard_time})
+    </insert>
+
+    <update id="updateRestaurant">
+        update RESTAURANT
+        set (location = {updateParam.location},
+                restaurant_name = {updateParam.restaurant_name},
+                category = {updateParam.category},
+                standaed_time = {updatedParam.standaed_time}
+                )
+        where id = #{id}
+    </update>
+
+    <select id="findById">
+
+    </select>
+
+    <select id="findAll" resultType="RestaurantDto">
+        select restaurant_id, res_user_id, goal_id, location, restaurant_name, category, standard_name
+        from RESTAURANT
+        where id = #{id}
+    </select>
+
+    <select id="findAll" resultType="RestaurantDto">
+        select restaurant_id, res_user_id, goal_id, location, restaurant_name, category, standard_name
+        from RESTAURANT
+        <where>
+            <if test="location != null and location != ''">
+                and location like concat('%', #{location}, '%')
+            </if>
+            <if test="restaurant_name != null and restaurant_name != ''">
+                and restaurant_name like concat('%', #{restaurant_name}, '%')
+            </if>
+            <if test="category != null and category != ''">
+                and category like concat('%', #{category}, '%')
+            </if>
+        </where>
+    </select>
+</mapper>
