@@ -3,6 +3,7 @@ package com.ldu.reservationOrder.controller;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.ldu.reservationOrder.dto.RestaurantDto;
+import com.ldu.reservationOrder.dto.RestaurantSerchDto;
 import com.ldu.reservationOrder.service.RestaurantService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
@@ -32,13 +33,14 @@ public class RestaurantController {
     }
 
     @GetMapping("/res")
-    public ResponseEntity<PageInfo> getRestaurantListsWhere(
-            @RequestParam(defaultValue = "1") Integer pageNum,
-            @RequestParam(defaultValue = "3") Integer pageSize
-            ) {
+    public ResponseEntity<PageInfo> getSearchRestaurantLists(@RequestParam(defaultValue = "1") Integer pageNum,
+                                                             @RequestParam(defaultValue = "3") Integer pageSize,
+                                                             RestaurantSerchDto restaurantSerchDto) {
         HttpHeaders httpHeaders = new HttpHeaders();
         PageHelper.startPage(pageNum, pageSize);
-        PageInfo<RestaurantDto> restaurantDtoPageInfo = PageInfo.of(restaurantService.getRestaurantLists());
+
+//        PageInfo<RestaurantDto> restaurantDtoPageInfo = PageInfo.of(restaurantService.getRestaurantLists());
+        PageInfo<RestaurantDto> restaurantDtoPageInfo =null;
 
         return new ResponseEntity<PageInfo>(restaurantDtoPageInfo, httpHeaders, HttpStatus.OK);
     }
