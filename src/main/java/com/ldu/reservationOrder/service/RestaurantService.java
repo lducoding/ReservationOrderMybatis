@@ -1,6 +1,7 @@
 package com.ldu.reservationOrder.service;
 
 import com.ldu.reservationOrder.dto.RestaurantDto;
+import com.ldu.reservationOrder.dto.RestaurantSerchDto;
 import com.ldu.reservationOrder.mapper.RestaurantMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -16,5 +17,9 @@ public class RestaurantService {
 
     public List<RestaurantDto> getRestaurantLists() {
         return restaurantMapper.getRestaurantLists();
+    }
+
+    public List<RestaurantDto> getSearchRestaurantLists(RestaurantSerchDto restaurantSerchDto) {
+        return restaurantMapper.getSearchRestaurantLists(restaurantSerchDto);
     }
 }

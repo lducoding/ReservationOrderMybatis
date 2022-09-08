@@ -21,5 +21,6 @@ public interface RestaurantMapper {
 
     Optional<RestaurantDto> findById(Long id);
 
-    List<RestaurantDto> findAll(RestaurantSerchDto restaurantSerchDto);
+    List<RestaurantDto> getSearchRestaurantLists(RestaurantSerchDto restaurantSerchDto);
+
 }

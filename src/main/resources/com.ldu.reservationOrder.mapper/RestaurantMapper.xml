@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="hello.itemservice.repository.mybatis.ItemMapper">
+<mapper namespace="com.ldu.reservationOrder.mapper.RestaurantMapper">
 
     <!-- xml에서 특수문자 추가로 필요하면 검색/ CDATA 사용하는 방법도 있다. -->
     <!--    < : &lt;-->
@@ -29,13 +29,13 @@
     </select>
 
     <select id="findAll" resultType="RestaurantDto">
-        select restaurant_id, res_user_id, goal_id, location, restaurant_name, category, standard_name
+        select restaurant_id, res_user_id, goal_id, location, restaurant_name, category, standard_time
         from RESTAURANT
         where id = #{id}
     </select>
 
-    <select id="findAll" resultType="RestaurantDto">
-        select restaurant_id, res_user_id, goal_id, location, restaurant_name, category, standard_name
+    <select id="getSearchRestaurantLists" resultType="RestaurantDto">
+        select restaurant_id, res_user_id, goal_id, location, restaurant_name, category, standard_time
         from RESTAURANT
         <where>
             <if test="location != null and location != ''">
@@ -49,4 +49,5 @@
             </if>
         </where>
     </select>
+
 </mapper>
