@@ -28,20 +28,20 @@ public class RestaurantController {
         HttpHeaders httpHeaders = new HttpHeaders();
         PageHelper.startPage(pageNum, pageSize);
         PageInfo<RestaurantDto> restaurantDtoPageInfo = PageInfo.of(restaurantService.getRestaurantLists());
-
         return new ResponseEntity<PageInfo>(restaurantDtoPageInfo, httpHeaders, HttpStatus.OK);
     }
 
-    @GetMapping("/res")
+    @GetMapping("/searchRestaurants")
     public ResponseEntity<PageInfo> getSearchRestaurantLists(@RequestParam(defaultValue = "1") Integer pageNum,
                                                              @RequestParam(defaultValue = "8") Integer pageSize,
                                                              RestaurantSerchDto restaurantSerchDto) {
         HttpHeaders httpHeaders = new HttpHeaders();
         PageHelper.startPage(pageNum, pageSize);
-
-//        PageInfo<RestaurantDto> restaurantDtoPageInfo = PageInfo.of(restaurantService.getRestaurantLists());
         PageInfo<RestaurantDto> restaurantDtoPageInfo = PageInfo.of( restaurantService.getSearchRestaurantLists(restaurantSerchDto));
-
         return new ResponseEntity<PageInfo>(restaurantDtoPageInfo, httpHeaders, HttpStatus.OK);
     }
+
+//    @GetMapping("/restaurantDetail")
+//    public ResponseEntity<>
+
 }

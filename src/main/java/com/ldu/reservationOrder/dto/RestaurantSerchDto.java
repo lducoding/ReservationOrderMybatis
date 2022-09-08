@@ -8,6 +8,6 @@ import lombok.RequiredArgsConstructor;
 public class RestaurantSerchDto {
 
     private String location;
-    private String restaurant_name;
+    private String restaurantName;
     private String category;
 }

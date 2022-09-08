@@ -1,6 +1,6 @@
 package com.ldu.reservationOrder.config.auth;
 
-import com.ldu.reservationOrder.entity.UserInfo;
+import com.ldu.reservationOrder.entity.ResUser;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -11,9 +11,9 @@ import java.util.Collection;
 @Data
 public class PrincipalDetails implements UserDetails {
 
-    private UserInfo userInfo;
+    private ResUser userInfo;
 
-    public PrincipalDetails(UserInfo user) {
+    public PrincipalDetails(ResUser user) {
         this.userInfo = user;
     }
 

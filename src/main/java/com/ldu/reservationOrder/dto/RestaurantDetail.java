@@ -1,14 +1,15 @@
 package com.ldu.reservationOrder.dto;
 
+import com.ldu.reservationOrder.entity.Menu;
 import lombok.Data;
-import lombok.RequiredArgsConstructor;
+
+import java.util.List;
 
 @Data
-@RequiredArgsConstructor
-public class RestaurantDto {
+public class RestaurantDetail {
 
     private final Long restaurantId;
-    private final Long resUserId;
+    private final List<Menu> menuList;
     private final Long goalId;
     private final String location;
     private final String restaurantName;

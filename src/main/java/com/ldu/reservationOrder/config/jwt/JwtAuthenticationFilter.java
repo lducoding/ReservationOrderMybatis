@@ -4,7 +4,7 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ldu.reservationOrder.config.auth.PrincipalDetails;
-import com.ldu.reservationOrder.entity.UserInfo;
+import com.ldu.reservationOrder.entity.ResUser;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -36,7 +36,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
         try {
             ObjectMapper objectMapper = new ObjectMapper();
-            UserInfo userInfo = objectMapper.readValue(request.getInputStream(), UserInfo.class);
+            ResUser userInfo = objectMapper.readValue(request.getInputStream(), ResUser.class);
             UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken =
                     new UsernamePasswordAuthenticationToken(userInfo.getEmail(), userInfo.getPass());
             Authentication authentication = authenticationManager.authenticate(usernamePasswordAuthenticationToken);

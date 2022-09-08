@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @JsonIgnoreProperties( ignoreUnknown = true )
-public class UserInfo {
+public class ResUser {
 
     private Long res_user_id;
     private String pass;

@@ -11,7 +11,7 @@
     <insert id="registerRestaurant" useGeneratedKeys="true" keyProperty="restaurant_id">
         insert into RESTAURANT
         (res_user_id, goal_id, location, restaurant_name, category, standard_time)
-        values (#{res_user_id}, #{goal_id}, #{location}, #{restaurant_name}, #{category}, #{standard_time})
+        values (#{resUserId}, #{goalId}, #{location}, #{restaurantName}, #{category}, #{standardTime})
     </insert>
 
     <update id="updateRestaurant">
@@ -19,7 +19,7 @@
         set (location = {updateParam.location},
                 restaurant_name = {updateParam.restaurant_name},
                 category = {updateParam.category},
-                standaed_time = {updatedParam.standaed_time}
+                standaed_time = {updatedParam.standaedTime}
                 )
         where id = #{id}
     </update>
@@ -41,8 +41,8 @@
             <if test="location != null and location != ''">
                 and location like concat('%', #{location}, '%')
             </if>
-            <if test="restaurant_name != null and restaurant_name != ''">
-                and restaurant_name like concat('%', #{restaurant_name}, '%')
+            <if test="restaurantName != null and restaurantName != ''">
+                and restaurant_name like concat('%', #{restaurantName}, '%')
             </if>
             <if test="category != null and category != ''">
                 and category like concat('%', #{category}, '%')

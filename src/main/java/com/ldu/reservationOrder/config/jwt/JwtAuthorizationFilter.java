@@ -3,7 +3,7 @@ package com.ldu.reservationOrder.config.jwt;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.ldu.reservationOrder.config.auth.PrincipalDetails;
-import com.ldu.reservationOrder.entity.UserInfo;
+import com.ldu.reservationOrder.entity.ResUser;
 import com.ldu.reservationOrder.mapper.MemberRepository;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -38,7 +38,7 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
                 String username = JWT.require(Algorithm.HMAC512("donguking")).build().verify(jwtToken).getClaim("email").asString();
 
                 if (username != null) {
-                    UserInfo userEntity = memberMapper.getUserInfo(username);
+                    ResUser userEntity = memberMapper.getUserInfo(username);
 
                     // jwt토큰 서명을 통해서 서명이 정상이면 Authentication 객체를 만들어준다.
                     PrincipalDetails principalDetails = new PrincipalDetails(userEntity);

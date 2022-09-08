@@ -1,6 +1,6 @@
 package com.ldu.reservationOrder.config.auth;
 
-import com.ldu.reservationOrder.entity.UserInfo;
+import com.ldu.reservationOrder.entity.ResUser;
 import com.ldu.reservationOrder.mapper.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -19,7 +19,7 @@ public class PrincipalDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 //        User userEntity = userRepository.findByUsername(username);
-        UserInfo userInfo = memberMapper.getUserInfo(email);
+        ResUser userInfo = memberMapper.getUserInfo(email);
         PrincipalDetails principalDetails = new PrincipalDetails(userInfo);
         return principalDetails;
     }
