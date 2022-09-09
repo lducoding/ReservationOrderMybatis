@@ -7,11 +7,11 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class RestaurantDto {
 
-    private final Long restaurantId;
-    private final Long resUserId;
-    private final Long goalId;
-    private final String location;
-    private final String restaurantName;
-    private final String category;
-    private final int standardTime;
+    private Long restaurantId;
+    private Long resUserId;
+    private Long goalId;
+    private String location;
+    private String restaurantName;
+    private String category;
+    private int standardTime;
 }
