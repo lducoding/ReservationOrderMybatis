@@ -1,5 +1,6 @@
 package com.ldu.reservationOrder.service;
 
+import com.ldu.reservationOrder.dto.RestaurantDetailDto;
 import com.ldu.reservationOrder.dto.RestaurantDto;
 import com.ldu.reservationOrder.dto.RestaurantSerchDto;
 import com.ldu.reservationOrder.mapper.RestaurantMapper;
@@ -21,5 +22,9 @@ public class RestaurantService {
 
     public List<RestaurantDto> getSearchRestaurantLists(RestaurantSerchDto restaurantSerchDto) {
         return restaurantMapper.getSearchRestaurantLists(restaurantSerchDto);
+    }
+
+    public RestaurantDetailDto getRestaurantDetail(Long id) {
+        return restaurantMapper.getRestaurantDetail(id);
     }
 }

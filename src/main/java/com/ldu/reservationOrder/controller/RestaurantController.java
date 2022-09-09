@@ -2,6 +2,7 @@ package com.ldu.reservationOrder.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.ldu.reservationOrder.dto.RestaurantDetailDto;
 import com.ldu.reservationOrder.dto.RestaurantDto;
 import com.ldu.reservationOrder.dto.RestaurantSerchDto;
 import com.ldu.reservationOrder.service.RestaurantService;
@@ -10,6 +11,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -41,7 +43,11 @@ public class RestaurantController {
         return new ResponseEntity<PageInfo>(restaurantDtoPageInfo, httpHeaders, HttpStatus.OK);
     }
 
-//    @GetMapping("/restaurantDetail")
-//    public ResponseEntity<>
+    @GetMapping("/restaurantDetail/{id}")
+    public ResponseEntity<RestaurantDetailDto> getRestaurantDetail(@PathVariable Long id) {
+        HttpHeaders httpHeaders = new HttpHeaders();
+        RestaurantDetailDto restaurantDetailDto = restaurantService.getRestaurantDetail(id);
+        return new ResponseEntity<RestaurantDetailDto>(restaurantDetailDto, httpHeaders, HttpStatus.OK);
+    }
 
 }

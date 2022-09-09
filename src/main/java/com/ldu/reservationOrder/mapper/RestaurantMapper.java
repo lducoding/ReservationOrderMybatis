@@ -1,5 +1,6 @@
 package com.ldu.reservationOrder.mapper;
 
+import com.ldu.reservationOrder.dto.RestaurantDetailDto;
 import com.ldu.reservationOrder.dto.RestaurantDto;
 import com.ldu.reservationOrder.dto.RestaurantSerchDto;
 import org.apache.ibatis.annotations.Mapper;
@@ -23,4 +24,5 @@ public interface RestaurantMapper {
 
     List<RestaurantDto> getSearchRestaurantLists(RestaurantSerchDto restaurantSerchDto);
 
+    RestaurantDetailDto getRestaurantDetail(Long id);
 }

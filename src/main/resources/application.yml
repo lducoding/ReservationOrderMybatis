@@ -16,7 +16,7 @@ pagehelper:
 mybatis:
   mapper-locations:
     - com.ldu.reservationOrder.mapper/*.xml
-  type-aliases-package: com.ldu.reservationOrder.dto
+  type-aliases-package: com.ldu.reservationOrder
   configuration:
     map-underscore-to-camel-case: true
 

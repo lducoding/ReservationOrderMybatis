@@ -2,6 +2,23 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ldu.reservationOrder.mapper.RestaurantMapper">
+<!--    id는 매퍼에서 찾는 고유한 유니크 id type은 리턴 타입-->
+    <resultMap id="RestaurantDetailDto_resultMap" type="RestaurantDetailDto">
+<!--        column은 테이블의 컬럼명 property는 dto의 속성명-->
+        <id column="restaurant_id" property="restaurantId"/>
+        <result column="location" property="location"/>
+        <result column="restaurant_name" property="restaurantName"/>
+        <result column="category" property="category"/>
+        <result column="standard_time" property="standardTime"/>
+        <association property="goal" javaType="Goal">
+<!--            <id column="goal_id" property="goalId"/>-->
+            <result column="goal_type" property="goalType"/>
+            <result column="goal_money" property="goalMoney"/>
+            <result column="recent_money" property="recentMoney"/>
+            <result column="success" property="success"/>
+            <result column="register_date" property="registerDate"/>
+        </association>
+    </resultMap>
 
     <!-- xml에서 특수문자 추가로 필요하면 검색/ CDATA 사용하는 방법도 있다. -->
     <!--    < : &lt;-->
@@ -48,6 +65,18 @@
                 and category like concat('%', #{category}, '%')
             </if>
         </where>
+    </select>
+
+    <select id="getRestaurantDetail" resultMap="RestaurantDetailDto_resultMap">
+        select
+            res.restaurant_id, location, restaurant_name, category, standard_time,
+--             menu_id, menu_name, menu_price, menu_img,
+            goal_type, goal_money, recent_money, success, register_date
+        from RESTAURANT as res,
+             MENU AS menu,
+             GOAL as goal
+        where res.restaurant_id = #{id}
+          and res.restaurant_id  = menu.restaurant_id = goal.restaurant_id
     </select>
 
 </mapper>
