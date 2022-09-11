@@ -12,6 +12,12 @@
         <result column="standard_time" property="standardTime"/>
         <association property="goalDto" javaType="GoalDto" resultMap="goalDtoResultMap">
         </association>
+        <collection property="menuList" ofType="Menu">
+            <id column="menu_id" property="menuId"/>
+            <result column="menu_name" property="menuName"/>
+            <result column="menu_price" property="menuPrice"/>
+            <result column="menu_img" property="menuImg"/>
+        </collection>
     </resultMap>
     <resultMap id="goalDtoResultMap" type="GoalDto">
         <id column="goal_id" property="goalId"/>
@@ -72,7 +78,7 @@
     <select id="getRestaurantDetail" resultMap="RestaurantDetailDtoResultMap">
         select
             res.restaurant_id, res.location, res.restaurant_name, res.category, res.standard_time,
---             menu_id, menu_name, menu_price, menu_img,
+            menu_id, menu_name, menu_price, menu_img,
             goal.goal_id, goal.goal_type, goal.goal_money, goal.recent_money, goal.success, goal.register_date
         from RESTAURANT as res,
              MENU AS menu,
