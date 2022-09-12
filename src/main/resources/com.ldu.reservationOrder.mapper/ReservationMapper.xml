@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ldu.reservationOrder.mapper.ReservationMapper">
+
+    <insert id="registerReservation" useGeneratedKeys="true" keyProperty="reservationId" keyColumn="reservation_id">
+        insert into RESERVATION
+        (res_user_id, restaurant_id, reservation_date, reservation_status)
+        values (#{resUserId}, #{restaurantId}, #{reservationDate}, #{reservationStatus})
+    </insert>
+
+    <insert id="registerReservationMenu">
+        insert into RESERVATION_MENU
+            (reservation_id, menu_id)
+        values (#{reservationId}, #{menuId})
+    </insert>
+</mapper>
