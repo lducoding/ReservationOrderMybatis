@@ -158,3 +158,15 @@ CREATE table GOAL (
                       FOREIGN KEY (restaurant_id)
                           REFERENCES RESTAURANT(restaurant_id) ON DELETE CASCADE
 )
+
+create table RESERVATION_MENU (
+                      reservation_id      bigint not null,
+                      reservation_menu_id bigint auto_increment,
+                      menu_id             bigint not null,
+                      constraint reservation_menu_id
+                      primary key (reservation_menu_id),
+                      constraint menu_id
+                      foreign key (menu_id) references MENU (menu_id),
+                      constraint reservation_id
+                      foreign key (reservation_id) references RESERVATION (reservation_id)
+)
