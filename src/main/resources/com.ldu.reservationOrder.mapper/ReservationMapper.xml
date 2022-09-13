@@ -3,6 +3,19 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ldu.reservationOrder.mapper.ReservationMapper">
 
+    <resultMap id="registerReservationConfirmResultMap" type="ConfirmReservationDto">
+        <result column="res_user_id" property="resUserId"/>
+        <result column="restaurant_id" property="restaurantId"/>
+        <result column="reservation_date" property="reservationDate"/>
+        <result column="reservation_status" property="reservationStatus"/>
+        <collection property="menuList" ofType="Menu">
+            <id column="menu_id" property="menuId"/>
+            <result column="menu_name" property="menuName"/>
+            <result column="menu_price" property="menuPrice"/>
+            <result column="menu_img" property="menuImg"/>
+        </collection>
+    </resultMap>
+
     <insert id="registerReservation" useGeneratedKeys="true" keyProperty="reservationId" keyColumn="reservation_id">
         insert into RESERVATION
         (res_user_id, restaurant_id, reservation_date, reservation_status)
@@ -14,4 +27,13 @@
             (reservation_id, menu_id)
         values (#{reservationId}, #{menuId})
     </insert>
+
+    <select id="registerReservationConfirm" resultMap="registerReservationConfirmResultMap">
+        select
+            res.res_user_id, res.restaurant_id, res.reservation_date, res.reservation_status,
+            menu.menu_name, menu.menu_price, menu.menu_img
+        from RESERVATION res, MENU menu, (select menu_id from RESERVATION_MENU where reservation_id = #{reservationId}) mId
+        where res.reservation_id = #{reservationId}
+          and menu.menu_id = mId.menu_id
+    </select>
 </mapper>
