@@ -18,4 +18,6 @@ public interface MemberRepository {
     @Select("select name from role where id = (select role_id from user_role where user_id = #{id})")
     String getUserRole(int id);
 
+    @Select("select res_user_id, name, email, roles, birth, mileage from RES_USER where res_user_id = #{userId}")
+    ResUser userInfo(Long userId);
 }
