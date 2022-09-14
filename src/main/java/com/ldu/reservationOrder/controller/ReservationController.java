@@ -2,6 +2,7 @@ package com.ldu.reservationOrder.controller;
 
 import com.ldu.reservationOrder.dto.ConfirmReservationDto;
 import com.ldu.reservationOrder.dto.ReservationDto;
+import com.ldu.reservationOrder.dto.UserReservationDto;
 import com.ldu.reservationOrder.service.ReservationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
@@ -24,12 +25,18 @@ public class ReservationController {
         return new ResponseEntity<Long>(reservationId, httpHeaders, HttpStatus.OK);
     }
 
-    @GetMapping("/registerReservationConfirm/{id}")
-    public ResponseEntity<List<ConfirmReservationDto>> registerReservation(@PathVariable Long id) {
+    @GetMapping("/registerReservationConfirm/{reservationId}")
+    public ResponseEntity<List<ConfirmReservationDto>> registerReservation(@PathVariable Long reservationId) {
         HttpHeaders httpHeaders = new HttpHeaders();
-        List<ConfirmReservationDto> confirmReservationDto = reservationService.registerReservationConfirm(id);
+        List<ConfirmReservationDto> confirmReservationDto = reservationService.registerReservationConfirm(reservationId);
         return new ResponseEntity<List<ConfirmReservationDto>>(confirmReservationDto, httpHeaders, HttpStatus.OK);
     }
 
+    @GetMapping("/userReservationList/{userId}")
+    public ResponseEntity<List<UserReservationDto>> userReservationList(@PathVariable Long userId) {
+        HttpHeaders httpHeaders = new HttpHeaders();
+        List<UserReservationDto> userReservationList = reservationService.getUserReservationList(userId);
+        return new ResponseEntity<List<UserReservationDto>>(userReservationList, httpHeaders, HttpStatus.OK);
+    }
 
 }

@@ -2,6 +2,7 @@ package com.ldu.reservationOrder.mapper;
 
 import com.ldu.reservationOrder.dto.ConfirmReservationDto;
 import com.ldu.reservationOrder.dto.ReservationDto;
+import com.ldu.reservationOrder.dto.UserReservationDto;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -15,4 +16,6 @@ public interface ReservationMapper {
     void registerReservationMenu(@Param("reservationId") Long reservationId,@Param("menuId") Long menuId);
 
     List<ConfirmReservationDto> registerReservationConfirm(@Param("reservationId") Long id);
+
+    List<UserReservationDto> getUserReservationList(@Param("userId") Long userId);
 }

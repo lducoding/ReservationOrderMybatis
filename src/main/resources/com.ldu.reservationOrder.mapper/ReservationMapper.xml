@@ -8,13 +8,26 @@
         <result column="restaurant_id" property="restaurantId"/>
         <result column="reservation_date" property="reservationDate"/>
         <result column="reservation_status" property="reservationStatus"/>
-        <collection property="menuList" ofType="Menu">
-            <id column="menu_id" property="menuId"/>
-            <result column="menu_name" property="menuName"/>
-            <result column="menu_price" property="menuPrice"/>
-            <result column="menu_img" property="menuImg"/>
-        </collection>
+        <collection property="menuList" ofType="Menu" resultMap="menuResultMap"></collection>
     </resultMap>
+
+    <resultMap id="getUserReservationListResultMap" type="UserReservationDto">
+        <id column="res_user_id" property="resUserId"/>
+        <result column="reservation_id" property="reservationId"/>
+        <result column="restaurant_id" property="restaurantId"/>
+        <result column="reservation_date" property="reservationDate"/>
+        <result column="reservation_status" property="reservationStatus"/>
+        <collection property="menuList" ofType="Menu" resultMap="menuResultMap"></collection>
+    </resultMap>
+
+    <resultMap id="menuResultMap" type="Menu">
+        <id column="menu_id" property="menuId"/>
+        <result column="restaurant_id" property="restaurantId"/>
+        <result column="menu_name" property="menuName"/>
+        <result column="menu_price" property="menuPrice"/>
+        <result column="menu_img" property="menuImg"/>
+    </resultMap>
+
 
     <insert id="registerReservation" useGeneratedKeys="true" keyProperty="reservationId" keyColumn="reservation_id">
         insert into RESERVATION
@@ -35,5 +48,21 @@
         from RESERVATION res, MENU menu, (select menu_id from RESERVATION_MENU where reservation_id = #{reservationId}) mId
         where res.reservation_id = #{reservationId}
           and menu.menu_id = mId.menu_id
+    </select>
+
+    <select id="getUserReservationList" resultMap="getUserReservationListResultMap">
+        select
+            res.reservation_id, res.res_user_id, res.restaurant_id, res.reservation_date, res.reservation_status,
+            menu.menu_id, menu.restaurant_id, menu.menu_name, menu.menu_price, menu.menu_img
+        from
+            (select
+                 reservation_id, res_user_id, restaurant_id, reservation_date, reservation_status
+             from
+                 RESERVATION
+             where res_user_id = #{userId}) res,
+            RESERVATION_MENU rm,
+            MENU menu
+        where res.reservation_id = rm.reservation_id
+          and menu.menu_id = rm.menu_id
     </select>
 </mapper>
