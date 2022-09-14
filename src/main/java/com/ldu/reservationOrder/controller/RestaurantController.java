@@ -10,10 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -48,6 +45,13 @@ public class RestaurantController {
         HttpHeaders httpHeaders = new HttpHeaders();
         RestaurantDetailDto restaurantDetailDto = restaurantService.getRestaurantDetail(id);
         return new ResponseEntity<RestaurantDetailDto>(restaurantDetailDto, httpHeaders, HttpStatus.OK);
+    }
+
+    @PostMapping("/restaurants")
+    public ResponseEntity<Long> registerRestaurant(@RequestBody RestaurantDto restaurantDto) {
+        HttpHeaders httpHeaders = new HttpHeaders();
+        Long restaurantId = restaurantService.registerRestaurant(restaurantDto);
+        return new ResponseEntity<Long>(restaurantId, httpHeaders, HttpStatus.OK);
     }
 
 }

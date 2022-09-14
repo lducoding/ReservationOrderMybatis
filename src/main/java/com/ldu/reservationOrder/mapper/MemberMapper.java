@@ -9,7 +9,7 @@ import org.apache.ibatis.annotations.Update;
 import java.util.Optional;
 
 @Mapper
-public interface MemberRepository {
+public interface MemberMapper {
 
     @Select("select name from role where id = (select role_id from user_role where user_id = #{id})")
     Optional<String> chkRole(String id);

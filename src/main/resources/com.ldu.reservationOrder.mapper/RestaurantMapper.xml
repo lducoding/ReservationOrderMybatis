@@ -33,7 +33,7 @@
     <!--    > : &gt;-->
     <!--    & : &amp;-->
     <!--  useGeneratedKeys 는 자동으로 키 생성 keyProperty는 자동생성 키 컬럼명 -->
-    <insert id="registerRestaurant" useGeneratedKeys="true" keyProperty="restaurant_id">
+    <insert id="registerRestaurant" useGeneratedKeys="true" keyProperty="restaurantId">
         insert into RESTAURANT
         (res_user_id, goal_id, location, restaurant_name, category, standard_time)
         values (#{resUserId}, #{goalId}, #{location}, #{restaurantName}, #{category}, #{standardTime})

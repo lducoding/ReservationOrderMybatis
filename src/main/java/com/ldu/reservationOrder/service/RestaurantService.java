@@ -27,4 +27,9 @@ public class RestaurantService {
     public RestaurantDetailDto getRestaurantDetail(Long id) {
         return restaurantMapper.getRestaurantDetail(id);
     }
+
+    public Long registerRestaurant(RestaurantDto restaurantDto) {
+        restaurantMapper.registerRestaurant(restaurantDto);
+        return restaurantDto.getRestaurantId();
+    }
 }

@@ -6,7 +6,7 @@ spring:
       driver-class-name: com.mysql.cj.jdbc.Driver
       url: jdbc:mysql://localhost:3306/resOrder?useUnicode=yes&characterEncoding=UTF-8&allowMultiQueries=true&serverTimezone=Asia/Seoul
       username: root
-      password: matthew94@
+      password: 1234
 
 pagehelper:
   helper-dialect: mysql

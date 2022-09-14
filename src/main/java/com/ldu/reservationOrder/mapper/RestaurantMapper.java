@@ -16,7 +16,7 @@ public interface RestaurantMapper {
     @Select("select * from restaurant")
     List<RestaurantDto> getRestaurantLists();
 
-    void registerRestaurant(RestaurantDto restaurantDto);
+    Long registerRestaurant(RestaurantDto restaurantDto);
 
     void updateRestaurant(@Param("id") Long id, @Param("updateParam") RestaurantDto restaurantDto);
 
