@@ -46,6 +46,7 @@ public class RestaurantController {
     @GetMapping("/restaurantDetail/{id}")
     public ResponseEntity<RestaurantDetailDto> getRestaurantDetail(@PathVariable Long id) {
         HttpHeaders httpHeaders = new HttpHeaders();
+        
         RestaurantDetailDto restaurantDetailDto = restaurantService.getRestaurantDetail(id);
         return new ResponseEntity<RestaurantDetailDto>(restaurantDetailDto, httpHeaders, HttpStatus.OK);
     }
