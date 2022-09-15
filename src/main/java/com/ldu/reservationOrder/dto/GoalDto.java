@@ -4,10 +4,10 @@ import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
 @Data
-@RequiredArgsConstructor
 public class GoalDto {
 
     private Long goalId;
+    private Long restaurantId;
     private String goalType;
     private int goalMoney;
     private int recentMoney;

@@ -1,12 +1,10 @@
 package com.ldu.reservationOrder.dto;
 
-import com.ldu.reservationOrder.entity.Goal;
 import com.ldu.reservationOrder.entity.Menu;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
-import java.util.Optional;
 
 @Data
 @RequiredArgsConstructor

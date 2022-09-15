@@ -2,6 +2,7 @@ package com.ldu.reservationOrder.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.ldu.reservationOrder.dto.GoalDto;
 import com.ldu.reservationOrder.dto.RestaurantDetailDto;
 import com.ldu.reservationOrder.dto.RestaurantDto;
 import com.ldu.reservationOrder.dto.RestaurantSerchDto;
@@ -52,6 +53,13 @@ public class RestaurantController {
         HttpHeaders httpHeaders = new HttpHeaders();
         Long restaurantId = restaurantService.registerRestaurant(restaurantDto);
         return new ResponseEntity<Long>(restaurantId, httpHeaders, HttpStatus.OK);
+    }
+
+    @PostMapping("/goal")
+    public ResponseEntity<Long> registerGoal(@RequestBody GoalDto goalDto) {
+        HttpHeaders httpHeaders = new HttpHeaders();
+        Long goalId = restaurantService.registerGoal(goalDto);
+        return new ResponseEntity<Long>(goalId, httpHeaders, HttpStatus.OK);
     }
 
 }

@@ -87,4 +87,10 @@
           and res.restaurant_id  = menu.restaurant_id = goal.restaurant_id
     </select>
 
+    <insert id="registerGoal" useGeneratedKeys="true" keyProperty="goalId" keyColumn="goal_id">
+        insert into
+            GOAL
+        (restaurant_id, goal_type, goal_money, recent_money, success, register_data)
+        values (#{restaurantId}, #{goalType}, #{goalMoney}, #{recentMoney}, #{success}, #{registerDate})
+    </insert>
 </mapper>
