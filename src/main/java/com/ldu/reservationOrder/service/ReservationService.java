@@ -3,6 +3,7 @@ package com.ldu.reservationOrder.service;
 import com.ldu.reservationOrder.dto.ConfirmReservationDto;
 import com.ldu.reservationOrder.dto.ReservationDto;
 import com.ldu.reservationOrder.dto.UserReservationDto;
+import com.ldu.reservationOrder.entity.UserRole;
 import com.ldu.reservationOrder.mapper.ReservationMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -27,7 +28,7 @@ public class ReservationService {
         return reservationMapper.registerReservationConfirm(id);
     }
 
-    public List<UserReservationDto> getUserReservationList(Long userId, String role) {
-        return reservationMapper.getUserReservationList(userId, role);
+    public List<UserReservationDto> getUserReservationList(Long userId, String userRole) {
+        return reservationMapper.getUserReservationList(userId, userRole);
     }
 }

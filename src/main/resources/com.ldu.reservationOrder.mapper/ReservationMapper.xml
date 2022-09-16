@@ -60,7 +60,7 @@
              from
                  RESERVATION
              <choose>
-                 <when test="role == 'customer'">
+                 <when test="userRole == 'ROLE_CUSTOMER'">
                      WHERE res_user_id = #{userId}
                  </when>
                  <otherwise>
