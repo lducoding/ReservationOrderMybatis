@@ -27,7 +27,7 @@ public class ReservationService {
         return reservationMapper.registerReservationConfirm(id);
     }
 
-    public List<UserReservationDto> getUserReservationList(Long userId) {
-        return reservationMapper.getUserReservationList(userId);
+    public List<UserReservationDto> getUserReservationList(Long userId, String role) {
+        return reservationMapper.getUserReservationList(userId, role);
     }
 }

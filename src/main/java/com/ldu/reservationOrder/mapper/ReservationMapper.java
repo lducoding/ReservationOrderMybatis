@@ -17,5 +17,5 @@ public interface ReservationMapper {
 
     List<ConfirmReservationDto> registerReservationConfirm(@Param("reservationId") Long id);
 
-    List<UserReservationDto> getUserReservationList(@Param("userId") Long userId);
+    List<UserReservationDto> getUserReservationList(@Param("userId") Long userId, @Param("role") String role);
 }

@@ -35,7 +35,7 @@ public class ReservationController {
     @GetMapping("/userReservationList/{userId}")
     public ResponseEntity<List<UserReservationDto>> userReservationList(@PathVariable Long userId) {
         HttpHeaders httpHeaders = new HttpHeaders();
-        List<UserReservationDto> userReservationList = reservationService.getUserReservationList(userId);
+        List<UserReservationDto> userReservationList = reservationService.getUserReservationList(userId, "customer");
         return new ResponseEntity<List<UserReservationDto>>(userReservationList, httpHeaders, HttpStatus.OK);
     }
 

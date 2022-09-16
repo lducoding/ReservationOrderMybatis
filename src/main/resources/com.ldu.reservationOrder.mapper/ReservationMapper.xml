@@ -59,10 +59,19 @@
                  reservation_id, res_user_id, restaurant_id, reservation_date, reservation_status
              from
                  RESERVATION
-             where res_user_id = #{userId}) res,
+             <choose>
+                 <when test="role == 'customer'">
+                     WHERE res_user_id = #{userId}
+                 </when>
+                 <otherwise>
+                     WHERE restaurant_id = #{userId}
+                 </otherwise>
+             </choose>
+             ) res,
             RESERVATION_MENU rm,
             MENU menu
         where res.reservation_id = rm.reservation_id
           and menu.menu_id = rm.menu_id
     </select>
+
 </mapper>
