@@ -4,6 +4,8 @@ import com.ldu.reservationOrder.dto.GoalDto;
 import com.ldu.reservationOrder.dto.RestaurantDetailDto;
 import com.ldu.reservationOrder.dto.RestaurantDto;
 import com.ldu.reservationOrder.dto.RestaurantSerchDto;
+import com.ldu.reservationOrder.entity.Menu;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -28,4 +30,7 @@ public interface RestaurantMapper {
     RestaurantDetailDto getRestaurantDetail(Long id);
 
     Long registerGoal(GoalDto goalDto);
+
+    @Insert("insert into MENU (restaurant_id, menu_name, menu_price, menu_img) values (#{restaurantId}, #{menuName}, #{menuPrice}, #{menuImg})")
+    void registerMenu(Menu menu);
 }

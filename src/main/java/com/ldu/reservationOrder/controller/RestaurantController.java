@@ -2,10 +2,8 @@ package com.ldu.reservationOrder.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.ldu.reservationOrder.dto.GoalDto;
-import com.ldu.reservationOrder.dto.RestaurantDetailDto;
-import com.ldu.reservationOrder.dto.RestaurantDto;
-import com.ldu.reservationOrder.dto.RestaurantSerchDto;
+import com.ldu.reservationOrder.dto.*;
+import com.ldu.reservationOrder.entity.Menu;
 import com.ldu.reservationOrder.service.RestaurantService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
@@ -60,6 +58,13 @@ public class RestaurantController {
         HttpHeaders httpHeaders = new HttpHeaders();
         Long goalId = restaurantService.registerGoal(goalDto);
         return new ResponseEntity<Long>(goalId, httpHeaders, HttpStatus.OK);
+    }
+
+    @PostMapping("/menu")
+    public ResponseEntity<?> registerMenu(@RequestBody MenuListDto menuListDto) {
+        HttpHeaders httpHeaders = new HttpHeaders();
+        restaurantService.registerMenu(menuListDto);
+        return new ResponseEntity<>(1, httpHeaders, HttpStatus.OK);
     }
 
 }
