@@ -1,13 +1,11 @@
 package com.ldu.reservationOrder.service;
 
 import com.ldu.reservationOrder.dto.*;
-import com.ldu.reservationOrder.entity.Menu;
 import com.ldu.reservationOrder.mapper.RestaurantMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -38,8 +36,8 @@ public class RestaurantService {
     }
 
     public void registerMenu(MenuListDto menuListDto) {
-        for (Menu menu : menuListDto.getMenuList()) {
-            restaurantMapper.registerMenu(menu);
+        for (MenuDto menuDto : menuListDto.getMenuList()) {
+            restaurantMapper.registerMenu(menuDto);
         }
     }
 }

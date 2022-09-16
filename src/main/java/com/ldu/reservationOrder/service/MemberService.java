@@ -2,6 +2,7 @@ package com.ldu.reservationOrder.service;
 
 
 import com.ldu.reservationOrder.dto.UpdatePasswordDto;
+import com.ldu.reservationOrder.dto.UserDto;
 import com.ldu.reservationOrder.entity.ResUser;
 import com.ldu.reservationOrder.mapper.MemberMapper;
 import lombok.RequiredArgsConstructor;
@@ -27,6 +28,12 @@ public class MemberService{
     public void updatePassword(UpdatePasswordDto updatePasswordDto) {
         updatePasswordDto.setPass("{noop}"+updatePasswordDto.getPass());
         memberMapper.updatePassword(updatePasswordDto);
+    }
+
+    public Long registerUser(UserDto userDto) {
+        userDto.setPass("{noop}"+userDto.getPass());
+        memberMapper.registerUser(userDto);
+        return userDto.getResUserId();
     }
 }
 

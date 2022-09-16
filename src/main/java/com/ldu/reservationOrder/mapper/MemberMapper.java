@@ -1,7 +1,9 @@
 package com.ldu.reservationOrder.mapper;
 
 import com.ldu.reservationOrder.dto.UpdatePasswordDto;
+import com.ldu.reservationOrder.dto.UserDto;
 import com.ldu.reservationOrder.entity.ResUser;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
@@ -25,4 +27,6 @@ public interface MemberMapper {
 
     @Update("update RES_USER set pass = #{pass} where res_user_id = #{resUserId}")
     void updatePassword(UpdatePasswordDto updatePasswordDto);
+
+    Long registerUser(UserDto userDto);
 }

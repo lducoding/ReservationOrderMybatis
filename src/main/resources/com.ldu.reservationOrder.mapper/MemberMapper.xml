@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ldu.reservationOrder.mapper.MemberMapper">
+
+    <insert id="registerUser" useGeneratedKeys="true" keyProperty="resUserId" keyColumn="res_user_id">
+        insert into
+            RES_USER(pass, name, email, roles, birth, mileage)
+        values
+            (#{pass}, #{name}, #{email}, #{roles}, #{birth}, 0)
+    </insert>
+
+</mapper>

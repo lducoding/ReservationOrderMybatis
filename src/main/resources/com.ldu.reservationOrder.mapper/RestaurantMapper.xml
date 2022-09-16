@@ -12,7 +12,7 @@
         <result column="standard_time" property="standardTime"/>
         <association property="goalDto" javaType="GoalDto" resultMap="goalDtoResultMap">
         </association>
-        <collection property="menuList" ofType="Menu">
+        <collection property="menuList" ofType="MenuDto">
             <id column="menu_id" property="menuId"/>
             <result column="menu_name" property="menuName"/>
             <result column="menu_price" property="menuPrice"/>

@@ -1,9 +1,9 @@
-package com.ldu.reservationOrder.entity;
+package com.ldu.reservationOrder.dto;
 
 import lombok.Data;
 
 @Data
-public class Menu {
+public class MenuDto {
     private Long menuId;
     private Long restaurantId;
     private String menuName;

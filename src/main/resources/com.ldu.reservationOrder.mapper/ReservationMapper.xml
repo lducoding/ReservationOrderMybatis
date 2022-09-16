@@ -8,7 +8,7 @@
         <result column="restaurant_id" property="restaurantId"/>
         <result column="reservation_date" property="reservationDate"/>
         <result column="reservation_status" property="reservationStatus"/>
-        <collection property="menuList" ofType="Menu" resultMap="menuResultMap"></collection>
+        <collection property="menuList" ofType="MenuDto" resultMap="menuResultMap"></collection>
     </resultMap>
 
     <resultMap id="getUserReservationListResultMap" type="UserReservationDto">
@@ -17,10 +17,10 @@
         <result column="restaurant_id" property="restaurantId"/>
         <result column="reservation_date" property="reservationDate"/>
         <result column="reservation_status" property="reservationStatus"/>
-        <collection property="menuList" ofType="Menu" resultMap="menuResultMap"></collection>
+        <collection property="menuList" ofType="MenuDto" resultMap="menuResultMap"></collection>
     </resultMap>
 
-    <resultMap id="menuResultMap" type="Menu">
+    <resultMap id="menuResultMap" type="MenuDto">
         <id column="menu_id" property="menuId"/>
         <result column="restaurant_id" property="restaurantId"/>
         <result column="menu_name" property="menuName"/>
