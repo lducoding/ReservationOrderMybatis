@@ -27,5 +27,14 @@ public class HomeController {
         return "123";
     }
 
+    @GetMapping("/res/hello")
+    public String hi(Model model, HttpServletResponse response) {
+        Map<String,String> map = new HashMap<>();
+        map.put("1","1");
+        map.put("test","test");
+        map.put("ldu","이동욱");
+        return "123";
+    }
+
 
 }
