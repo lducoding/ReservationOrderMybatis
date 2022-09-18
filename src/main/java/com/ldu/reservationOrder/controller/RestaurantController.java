@@ -62,7 +62,4 @@ public class RestaurantController {
         restaurantService.registerMenu(menuListDto);
         return new ResponseEntity<>(1, httpHeaders, HttpStatus.OK);
     }
-
-
-
 }

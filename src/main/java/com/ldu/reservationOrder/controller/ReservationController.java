@@ -48,4 +48,11 @@ public class ReservationController {
         return new ResponseEntity<List<UserReservationDto>>(userReservationList, httpHeaders, HttpStatus.OK);
     }
 
+    @PutMapping("/reservationStatus")
+    public ResponseEntity<Long> updateReservationStatus(@RequestParam Long reservationId, @RequestParam String status) {
+        HttpHeaders httpHeaders = new HttpHeaders();
+        Long statusOk = reservationService.updateReservationStatus(reservationId,status);
+        return new ResponseEntity<Long>(statusOk, httpHeaders, HttpStatus.OK);
+    }
+
 }

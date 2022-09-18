@@ -31,4 +31,8 @@ public class ReservationService {
     public List<UserReservationDto> getUserReservationList(Long userId, String userRole) {
         return reservationMapper.getUserReservationList(userId, userRole);
     }
+
+    public Long updateReservationStatus(Long reservationId, String status) {
+        return reservationMapper.updateReservationStatus(reservationId,status);
+    }
 }
